@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>音视频笔记（1）--YUV格式 | ciiki的博客</title><meta name="author" content="ciiki"><meta name="copyright" content="ciiki"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="来源我们都知道RGB格式表示色彩，但是之前的显示器只能解析灰白的图像，为了兼容老旧设备，自然不能用RGB格式表示图像，于是YUV出现了。它可以将RGB三个分量转换成YUV三个分量，对于可以显示彩色的设备，解析Y、U、V三个分量，显示出彩色；对于老旧黑白设备，仅解析Y分量，就可以显示出黑白的图像。 YUV和YCbCr、YPbPr几个概念是一样的，Y表示亮度（Luminance），也就是灰度，U是色度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音视频笔记（1）--YUV格式">
+<meta property="og:url" content="http://ciiki.eu.org/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-YUV%E6%A0%BC%E5%BC%8F/index.html">
+<meta property="og:site_name" content="ciiki的博客">
+<meta property="og:description" content="来源我们都知道RGB格式表示色彩，但是之前的显示器只能解析灰白的图像，为了兼容老旧设备，自然不能用RGB格式表示图像，于是YUV出现了。它可以将RGB三个分量转换成YUV三个分量，对于可以显示彩色的设备，解析Y、U、V三个分量，显示出彩色；对于老旧黑白设备，仅解析Y分量，就可以显示出黑白的图像。 YUV和YCbCr、YPbPr几个概念是一样的，Y表示亮度（Luminance），也就是灰度，U是色度">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.ciiki.eu.org/2023/11/yuv.jpg">
+<meta property="article:published_time" content="2022-12-21T05:30:45.000Z">
+<meta property="article:modified_time" content="2024-02-18T03:59:34.687Z">
+<meta property="article:author" content="ciiki">
+<meta property="article:tag" content="音视频">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.ciiki.eu.org/2023/11/yuv.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ciiki.eu.org/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-YUV%E6%A0%BC%E5%BC%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '音视频笔记（1）--YUV格式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-18 11:59:34'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.ciiki.eu.org/2023/11/yuv.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="ciiki的博客"><span class="site-name">ciiki的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">音视频笔记（1）--YUV格式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-21T05:30:45.000Z" title="发表于 2022-12-21 13:30:45">2022-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-18T03:59:34.687Z" title="更新于 2024-02-18 11:59:34">2024-02-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/">音视频学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">591</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="音视频笔记（1）--YUV格式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>我们都知道RGB格式表示色彩，但是之前的显示器只能解析灰白的图像，为了兼容老旧设备，自然不能用RGB格式表示图像，于是YUV出现了。它可以将RGB三个分量转换成YUV三个分量，对于可以显示彩色的设备，解析Y、U、V三个分量，显示出彩色；对于老旧黑白设备，仅解析Y分量，就可以显示出黑白的图像。</p>
+<p>YUV和YCbCr、YPbPr几个概念是一样的，Y表示亮度（Luminance），也就是灰度，U是色度（Chrominance），V是浓度（Chroma），而人眼对亮度分量Y的敏感度是高于UV分量的，所以YUV相对于RGB还可以减少数据量</p>
+<h2 id="RGB转YUV"><a href="#RGB转YUV" class="headerlink" title="RGB转YUV"></a>RGB转YUV</h2><p>Y &#x3D; 0.299<em>R + 0.587</em>G + 0.114*B</p>
+<p>U &#x3D; -0.147<em>R - 0.289</em>G + 0.436<em>B &#x3D; 0.492</em>(B-Y)</p>
+<p>V &#x3D; 0.615<em>R - 0.515</em>G - 0.100<em>B &#x3D; 0.877</em>(R-Y)</p>
+<h2 id="YUV转RGB"><a href="#YUV转RGB" class="headerlink" title="YUV转RGB"></a>YUV转RGB</h2><p>R &#x3D; Y + 1.140*V</p>
+<p>G &#x3D; Y - 0.394<em>U - 0.581</em>V</p>
+<p>B &#x3D; Y + 2.032*U</p>
+<h1 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
+<li><p>YUV444</p>
+<p>  Y + U + V &#x3D; 8 + 8 + 8 &#x3D; 24bits &#x3D; 3字节</p>
+</li>
+<li><p>YUV422</p>
+<p>  Y + 0.5U + 0.5V &#x3D; 8 + 4 + 4 &#x3D; 16bits &#x3D; 2字节</p>
+</li>
+<li><p>YUV420</p>
+<p>  Y + 0.25U + 0.25V &#x3D; 8 + 2 + 2 &#x3D; 12bits &#x3D; 1.5 字节</p>
+</li>
+</ul>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><p>YUV的存储形式分为Packed(打包)格式和Planar(平面)格式</p>
+<ul>
+<li>Packed: YUV-YUV-YUV-YUV（交替存储）</li>
+<li>Planar:<ul>
+<li>Planar: YYYY-UUUU-VVVV（连续存储）</li>
+<li>Semi-Planar: YYYY-UVUVUVUV（Y连续存储，UV交替存储）</li>
+</ul>
+</li>
+</ul>
+<h3 id="YUV422常用格式"><a href="#YUV422常用格式" class="headerlink" title="YUV422常用格式"></a>YUV422常用格式</h3><ul>
+<li><p>Packed格式：</p>
+<p>  1.YUYV: Y0 U0 Y1 V0 Y2 U2 Y3 V2</p>
+<p>  2.UYVY: U0 Y0 V0 Y1 U2 Y2 V2 Y3</p>
+</li>
+<li><p>Planar格式：</p>
+<p>  3.YUV422P(I422): Y Y Y Y U U V V</p>
+</li>
+</ul>
+<h3 id="YUV420常用格式"><a href="#YUV420常用格式" class="headerlink" title="YUV420常用格式"></a>YUV420常用格式</h3><ul>
+<li><p>Planar格式（YUV420P）：</p>
+<p>  1.YU12(I420): Y Y Y Y Y Y Y Y U U V V</p>
+<p>  2.YV12: Y Y Y Y Y Y Y Y V V U U</p>
+</li>
+<li><p>Semi-Planar格式(YUV420SP)：</p>
+<p>  1.NV12: Y Y Y Y Y Y Y Y U V U V ————iOS使用</p>
+<p>  2.NV21: Y Y Y Y Y Y Y Y V U V U ————Android使用</p>
+</li>
+</ul>
+<h1 id="YUV图像处理"><a href="#YUV图像处理" class="headerlink" title="YUV图像处理"></a>YUV图像处理</h1><p>以YU12格式（也即I420）为例，介绍一下常用的YUV图像处理方法，图像宽为width，高height，则占用存储空间大小为 width*height*3&#x2F;2 bytes</p>
+<h2 id="YUV分量提取"><a href="#YUV分量提取" class="headerlink" title="YUV分量提取"></a>YUV分量提取</h2><p>存储0~width*height*1，即Y分量</p>
+<p>存储width*height*1~width*height*5&#x2F;4，即U分量</p>
+<p>存储width*height*5&#x2F;4~width*height*3&#x2F;2，即V分量</p>
+<h2 id="转灰度图"><a href="#转灰度图" class="headerlink" title="转灰度图"></a>转灰度图</h2><p>将width*height*1~width*height*3&#x2F;2置128</p>
+<p>U\V一个字节取值范围为0~255，128代表无色</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ciiki.eu.org">ciiki</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ciiki.eu.org/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-YUV%E6%A0%BC%E5%BC%8F/">http://ciiki.eu.org/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-YUV%E6%A0%BC%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ciiki.eu.org" target="_blank">ciiki的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/">音视频</a></div><div class="post_share"><div class="social-share" data-image="https://file.ciiki.eu.org/2023/11/yuv.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-PCM%E6%A0%BC%E5%BC%8F/" title="音视频笔记（2）--PCM格式"><img class="cover" src="https://file.ciiki.eu.org/2023/11/pcm.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">音视频笔记（2）--PCM格式</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/14/%E5%88%86%E8%BE%A8%E7%8E%87%E6%A0%BC%E5%BC%8F%E6%B1%87%E6%80%BB/" title="分辨率格式汇总"><img class="cover" src="https://s2.loli.net/2023/05/29/olMjCHQJymABUz9.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">分辨率格式汇总</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/10/08/G711%E7%BC%96%E8%A7%A3%E7%A0%81-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" title="G711编解码--C语言实现"><img class="cover" src="https://file.ciiki.eu.org/2023/10/G711.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-08</div><div class="title">G711编解码--C语言实现</div></div></a></div><div><a href="/2024/09/13/MinGW%E7%BC%96%E8%AF%91libopus/" title="windows下编译libopus"><img class="cover" src="https://file.ciiki.eu.org/2024/09/opus-logo.svg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-13</div><div class="title">windows下编译libopus</div></div></a></div><div><a href="/2022/12/14/%E5%88%86%E8%BE%A8%E7%8E%87%E6%A0%BC%E5%BC%8F%E6%B1%87%E6%80%BB/" title="分辨率格式汇总"><img class="cover" src="https://s2.loli.net/2023/05/29/olMjCHQJymABUz9.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">分辨率格式汇总</div></div></a></div><div><a href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-PCM%E6%A0%BC%E5%BC%8F/" title="音视频笔记（2）--PCM格式"><img class="cover" src="https://file.ciiki.eu.org/2023/11/pcm.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-21</div><div class="title">音视频笔记（2）--PCM格式</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ciiki</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://t.me/ciiki_li" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="mailto:ciiki@ciiki.eu.org" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">ciiki の Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90"><span class="toc-number">1.</span> <span class="toc-text">来源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RGB%E8%BD%ACYUV"><span class="toc-number">1.1.</span> <span class="toc-text">RGB转YUV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YUV%E8%BD%ACRGB"><span class="toc-number">1.2.</span> <span class="toc-text">YUV转RGB</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8"><span class="toc-number">2.2.</span> <span class="toc-text">存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#YUV422%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">YUV422常用格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#YUV420%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text">YUV420常用格式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YUV%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">YUV图像处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#YUV%E5%88%86%E9%87%8F%E6%8F%90%E5%8F%96"><span class="toc-number">3.1.</span> <span class="toc-text">YUV分量提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E7%81%B0%E5%BA%A6%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">转灰度图</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/26/prometheus%20+%20Grafana%E7%9B%91%E6%8E%A7clash%E6%B5%81%E9%87%8F/" title="prometheus + Grafana监控ShellCrash流量"><img src="https://file.ciiki.eu.org/2024/09/20240926162536.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="prometheus + Grafana监控ShellCrash流量"/></a><div class="content"><a class="title" href="/2024/09/26/prometheus%20+%20Grafana%E7%9B%91%E6%8E%A7clash%E6%B5%81%E9%87%8F/" title="prometheus + Grafana监控ShellCrash流量">prometheus + Grafana监控ShellCrash流量</a><time datetime="2024-09-26T05:43:48.000Z" title="发表于 2024-09-26 13:43:48">2024-09-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/13/MinGW%E7%BC%96%E8%AF%91libopus/" title="windows下编译libopus"><img src="https://file.ciiki.eu.org/2024/09/opus-logo.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows下编译libopus"/></a><div class="content"><a class="title" href="/2024/09/13/MinGW%E7%BC%96%E8%AF%91libopus/" title="windows下编译libopus">windows下编译libopus</a><time datetime="2024-09-13T06:03:45.000Z" title="发表于 2024-09-13 14:03:45">2024-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/08/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E6%90%AD%E5%BB%BAAP/" title="无线网卡搭建AP"><img src="https://file.ciiki.eu.org/2024/08/80211.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无线网卡搭建AP"/></a><div class="content"><a class="title" href="/2024/08/08/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E6%90%AD%E5%BB%BAAP/" title="无线网卡搭建AP">无线网卡搭建AP</a><time datetime="2024-08-08T02:25:13.000Z" title="发表于 2024-08-08 10:25:13">2024-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/01/CMake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="CMake学习笔记"><img src="https://file.ciiki.eu.org/2023/12/cmake.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CMake学习笔记"/></a><div class="content"><a class="title" href="/2023/12/01/CMake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="CMake学习笔记">CMake学习笔记</a><time datetime="2023-12-01T01:59:45.000Z" title="发表于 2023-12-01 09:59:45">2023-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/30/VSCode%E9%85%8D%E7%BD%AEssh%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" title="VSCode配置ssh免密登录"><img src="https://file.ciiki.eu.org/2023/11/sshvscode.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VSCode配置ssh免密登录"/></a><div class="content"><a class="title" href="/2023/11/30/VSCode%E9%85%8D%E7%BD%AEssh%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" title="VSCode配置ssh免密登录">VSCode配置ssh免密登录</a><time datetime="2023-11-30T05:39:33.000Z" title="发表于 2023-11-30 13:39:33">2023-11-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By ciiki</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.ciiki.eu.org/.netlify/functions/twikoo',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.ciiki.eu.org/.netlify/functions/twikoo',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

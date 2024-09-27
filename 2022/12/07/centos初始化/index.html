@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CentOS初始化 | ciiki的博客</title><meta name="author" content="ciiki"><meta name="copyright" content="ciiki"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="查看Linux发行版本1# cat &#x2F;etc&#x2F;os-release  开启root用户ssh先安装openssh-server 1# yum install openssh-server 修改ssh配置文件 12# vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config:set nu #vim显示行号 修改第34行(注意去掉前面的”#”号) 1#PermitRootLogin without-passw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS初始化">
+<meta property="og:url" content="http://ciiki.eu.org/2022/12/07/centos%E5%88%9D%E5%A7%8B%E5%8C%96/index.html">
+<meta property="og:site_name" content="ciiki的博客">
+<meta property="og:description" content="查看Linux发行版本1# cat &#x2F;etc&#x2F;os-release  开启root用户ssh先安装openssh-server 1# yum install openssh-server 修改ssh配置文件 12# vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config:set nu #vim显示行号 修改第34行(注意去掉前面的”#”号) 1#PermitRootLogin without-passw">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/05/29/JXcV9vs2NHkZqDb.jpg">
+<meta property="article:published_time" content="2022-12-07T01:35:59.000Z">
+<meta property="article:modified_time" content="2023-11-08T05:29:51.870Z">
+<meta property="article:author" content="ciiki">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/05/29/JXcV9vs2NHkZqDb.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://ciiki.eu.org/2022/12/07/centos%E5%88%9D%E5%A7%8B%E5%8C%96/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CentOS初始化',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-08 13:29:51'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/29/JXcV9vs2NHkZqDb.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="ciiki的博客"><span class="site-name">ciiki的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CentOS初始化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-07T01:35:59.000Z" title="发表于 2022-12-07 09:35:59">2022-12-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-08T05:29:51.870Z" title="更新于 2023-11-08 13:29:51">2023-11-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CentOS初始化"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="查看Linux发行版本"><a href="#查看Linux发行版本" class="headerlink" title="查看Linux发行版本"></a>查看Linux发行版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/os-release</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="开启root用户ssh"><a href="#开启root用户ssh" class="headerlink" title="开启root用户ssh"></a>开启root用户ssh</h1><p>先安装openssh-server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install openssh-server</span></span><br></pre></td></tr></table></figure>
+<p>修改ssh配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/ssh/sshd_config</span></span><br><span class="line">:<span class="built_in">set</span> nu <span class="comment">#vim显示行号</span></span><br></pre></td></tr></table></figure>
+<p>修改第34行(注意去掉前面的”#”号)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#PermitRootLogin without-password ---&gt; PermitRootLogin yes</span></span><br></pre></td></tr></table></figure>
+
+<p>修改第58行(注意去掉前面的”#”号)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#PasswordAuthentication yes ---&gt; PasswordAuthentication yes</span></span><br></pre></td></tr></table></figure>
+<p>重启ssh服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo service ssh restart</span></span><br></pre></td></tr></table></figure>
+<h1 id="安装好CentOS无网"><a href="#安装好CentOS无网" class="headerlink" title="安装好CentOS无网"></a>安装好CentOS无网</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /etc/sysconfig/network-scripts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#vi ifcfg-ens34</span></span><br><span class="line"></span><br><span class="line">ONBOOT=<span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># systemctl restart network</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/yum.repos.d/CentOS-Base.repo</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># CentOS-Base.repo</span><br><span class="line">#</span><br><span class="line"># The mirror system uses the connecting IP address of the client and the</span><br><span class="line"># update status of each mirror to pick mirrors that are updated to and</span><br><span class="line"># geographically close to the client.  You should use this for CentOS updates</span><br><span class="line"># unless you are manually picking other mirrors.</span><br><span class="line">#</span><br><span class="line"># If the mirrorlist= does not work for you, as a fall back you can try the</span><br><span class="line"># remarked out baseurl= line instead.</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">[base]</span><br><span class="line">name=CentOS-$releasever - Base</span><br><span class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os&amp;infra=$infra</span><br><span class="line">baseurl=https://mirrors.ustc.edu.cn/centos/$releasever/os/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">#released updates</span><br><span class="line">[updates]</span><br><span class="line">name=CentOS-$releasever - Updates</span><br><span class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates&amp;infra=$infra</span><br><span class="line">baseurl=https://mirrors.ustc.edu.cn/centos/$releasever/updates/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">#additional packages that may be useful</span><br><span class="line">[extras]</span><br><span class="line">name=CentOS-$releasever - Extras</span><br><span class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra</span><br><span class="line">baseurl=https://mirrors.ustc.edu.cn/centos/$releasever/extras/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br><span class="line"></span><br><span class="line">#additional packages that extend functionality of existing packages</span><br><span class="line">[centosplus]</span><br><span class="line">name=CentOS-$releasever - Plus</span><br><span class="line">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra</span><br><span class="line">baseurl=https://mirrors.ustc.edu.cn/centos/$releasever/centosplus/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7</span><br></pre></td></tr></table></figure>
+
+<h1 id="git代理设置"><a href="#git代理设置" class="headerlink" title="git代理设置"></a>git代理设置</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git config --global https.proxy https://127.0.0.1:1082</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># git config --global http.proxy http://127.0.0.1:1082</span></span><br></pre></td></tr></table></figure>
+
+<p>127.0.0.1为代理服务器的地址，1082为代理端口</p>
+<h1 id="编译工具"><a href="#编译工具" class="headerlink" title="编译工具"></a>编译工具</h1><p>安装gcc、g++</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install gcc gcc-c++</span></span><br></pre></td></tr></table></figure>
+<p>安装其他相关常用工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum -y install gcc automake autoconf libtool make</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># yum install vim</span></span><br></pre></td></tr></table></figure>
+<h1 id="安装高版本gcc"><a href="#安装高版本gcc" class="headerlink" title="安装高版本gcc"></a>安装高版本gcc</h1><p>Centos 7默认gcc版本为4.8，有时项目使用gcc版本比较高，用低版本gcc编译会出问题，这时就需要安装个高版本的gcc</p>
+<p>1、安装centos-release-scl</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo yum install centos-release-scl</span></span><br></pre></td></tr></table></figure>
+
+<p>2、安装devtoolset，注意，如果想安装7.<em>版本的，就改成devtoolset-7-gcc</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo yum install devtoolset-8-gcc*</span></span><br></pre></td></tr></table></figure>
+
+<p>3、如何使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># source /opt/rh/devtoolset-8/enable</span></span><br></pre></td></tr></table></figure>
+
+<p>4、查看版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gcc -v</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，第三步执行后会在当前窗口生效，另开窗口的话还是会执行默认的4.8版本gcc，如果不想每次source一下，可以把&#x2F;usr&#x2F;bin&#x2F;下的gcc和g++备份一下，然后再创建个新版本的软连接，这样每次使用gcc都是用的高版本啦</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mv /usr/bin/gcc /usr/bin/gcc-4.8</span></span><br><span class="line"><span class="comment"># mv /usr/bin/g++ /usr/bin/g++-4.8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ln -s /opt/rh/devtoolset-8/root/bin/gcc /usr/bin/gcc</span></span><br><span class="line"><span class="comment"># ln -s /opt/rh/devtoolset-8/root/bin/g++ /usr/bin/g++</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="挂载windows共享目录"><a href="#挂载windows共享目录" class="headerlink" title="挂载windows共享目录"></a>挂载windows共享目录</h1><p>username为本地用户名，password为密码，如果没有密码就空着</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mount -t cifs -o username=administrator,password= //192.168.31.10/share /mnt</span></span><br></pre></td></tr></table></figure>
+<p>如果报mount失败<code>bad option； for several filesystems (e.g. nfs, cifs) ...</code>，则需要安装一下cifs-utils</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install cifs-utils （网上大多数说 yum install nfs-utils 我试了并不行）</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就可以愉快的在共享目录写代码，在linux里编译了。但是有个问题，linux文件系统一般为ext4，windows文件系统一般是NTFS，所以想在NTFS上生成linux下的软连接会报错<code>ln: failed to create symbolic link &#39;libxxx.so&#39;: Operation not supported</code>，这个问题我还没找到最好的解决办法（网上建议linux共享文件夹给windows，不太符合我的习惯），有更好方案的大佬可以给我说说</p>
+<h1 id="设置启动自动运行命令"><a href="#设置启动自动运行命令" class="headerlink" title="设置启动自动运行命令"></a>设置启动自动运行命令</h1><p>编辑rc.local，rc.local位置一般在&#x2F;etc&#x2F;rc.local或者&#x2F;etc&#x2F;rc.d&#x2F;rc.local，在exit 0前加上想要开机执行的命令即可，例如加上开机即挂载的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># It is highly advisable to create own systemd services or udev rules</span></span><br><span class="line"><span class="comment"># to run scripts during boot instead of using this file.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># In contrast to previous versions due to parallel execution during boot</span></span><br><span class="line"><span class="comment"># this script will NOT be run after all other services.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Please note that you must run &#x27;chmod +x /etc/rc.d/rc.local&#x27; to ensure</span></span><br><span class="line"><span class="comment"># that this script will be executed during boot.</span></span><br><span class="line"></span><br><span class="line">mount -t cifs -o username=administrator,password= //192.168.31.10/share /mnt</span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>如果&#x2F;etc下没有rc.local，也没有rc.d这个目录，只有rc0.d、rc1.d…，可以按以下方案<br>1、设置rc-local.service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo vim /etc/systemd/system/rc-local.service</span></span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line"> Description=/etc/rc.local Compatibility</span><br><span class="line"> ConditionPathExists=/etc/rc.local</span><br><span class="line">[Service]</span><br><span class="line"> Type=forking</span><br><span class="line"> ExecStart=/etc/rc.local start</span><br><span class="line"> TimeoutSec=0</span><br><span class="line"> StandardOutput=<span class="built_in">tty</span></span><br><span class="line"> RemainAfterExit=<span class="built_in">yes</span></span><br><span class="line"> SysVStartPriority=99</span><br><span class="line">[Install]</span><br><span class="line"> WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p> 2、激活rc-local.service<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo systemctl enable rc-local.service</span></span><br></pre></td></tr></table></figure><br>3、添加启动服务<br>手工创建&#x2F;etc&#x2F;rc.local<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh -e</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># rc.local</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This script is executed at the end of each multiuser runlevel.</span></span><br><span class="line"><span class="comment"># Make sure that the script will &quot;exit 0&quot; on success or any other</span></span><br><span class="line"><span class="comment"># value on error.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># In order to enable or disable this script just change the execution</span></span><br><span class="line"><span class="comment"># bits.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default this script does nothing.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面这条是要开机启动的命令</span></span><br><span class="line">mount -t cifs -o username=administrator,password= //192.168.31.10/share /mnt</span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure><br>4、给予脚本执行权限<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sudo chmod 777 /etc/rc.local</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="清理内存占用"><a href="#清理内存占用" class="headerlink" title="清理内存占用"></a>清理内存占用</h1><p>查看内存占用情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># free -m</span></span><br></pre></td></tr></table></figure>
+<p>开始清理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo 1 &gt; /proc/sys/vm/drop_caches</span></span><br></pre></td></tr></table></figure>
+<p>查看清理后内存占用情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># free -m</span></span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://ciiki.eu.org">ciiki</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://ciiki.eu.org/2022/12/07/centos%E5%88%9D%E5%A7%8B%E5%8C%96/">http://ciiki.eu.org/2022/12/07/centos%E5%88%9D%E5%A7%8B%E5%8C%96/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ciiki.eu.org" target="_blank">ciiki的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/05/29/JXcV9vs2NHkZqDb.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/12/CentOS%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/" title="CentOS交叉编译环境"><img class="cover" src="https://s2.loli.net/2023/05/29/WlJh3eImUTdZiRu.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CentOS交叉编译环境</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/29/64%E4%BD%8DLinux%E7%BC%96%E8%AF%9132%E4%BD%8D%E7%A8%8B%E5%BA%8F/" title="64位Linux编译32位程序"><img class="cover" src="https://s3.uuu.ovh/imgs/2022/11/29/09d97cee24a4c00a.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">64位Linux编译32位程序</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/29/64%E4%BD%8DLinux%E7%BC%96%E8%AF%9132%E4%BD%8D%E7%A8%8B%E5%BA%8F/" title="64位Linux编译32位程序"><img class="cover" src="https://s3.uuu.ovh/imgs/2022/11/29/09d97cee24a4c00a.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-29</div><div class="title">64位Linux编译32位程序</div></div></a></div><div><a href="/2023/10/17/Doxygen%E7%94%9F%E6%88%90%E9%A1%B9%E7%9B%AE%E6%96%87%E6%A1%A3/" title="Doxygen生成项目文档"><img class="cover" src="https://file.ciiki.eu.org/2023/10/doxygen.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-17</div><div class="title">Doxygen生成项目文档</div></div></a></div><div><a href="/2022/12/12/CentOS%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/" title="CentOS交叉编译环境"><img class="cover" src="https://s2.loli.net/2023/05/29/WlJh3eImUTdZiRu.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-12</div><div class="title">CentOS交叉编译环境</div></div></a></div><div><a href="/2022/11/22/Linux%E7%BB%86%E7%A2%8E%E6%93%8D%E4%BD%9C/" title="Linux细碎操作"><img class="cover" src="https://media.geeksforgeeks.org/wp-content/uploads/s2-1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-22</div><div class="title">Linux细碎操作</div></div></a></div><div><a href="/2023/05/29/Linux-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="Linux 网络编程"><img class="cover" src="https://s2.loli.net/2023/06/06/EwhuslxDGeTBnMj.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-29</div><div class="title">Linux 网络编程</div></div></a></div><div><a href="/2023/05/28/Linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AF%A6%E8%A7%A3/" title="Linux环境变量详解"><img class="cover" src="https://s2.loli.net/2023/05/29/zjRFBdQ3KgatlEJ.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-28</div><div class="title">Linux环境变量详解</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ciiki</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">41</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://t.me/ciiki_li" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="mailto:ciiki@ciiki.eu.org" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">ciiki の Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8BLinux%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">查看Linux发行版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%90%AFroot%E7%94%A8%E6%88%B7ssh"><span class="toc-number">2.</span> <span class="toc-text">开启root用户ssh</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%A5%BDCentOS%E6%97%A0%E7%BD%91"><span class="toc-number">3.</span> <span class="toc-text">安装好CentOS无网</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">换源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">git代理设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7"><span class="toc-number">6.</span> <span class="toc-text">编译工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%AB%98%E7%89%88%E6%9C%ACgcc"><span class="toc-number">7.</span> <span class="toc-text">安装高版本gcc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%82%E8%BD%BDwindows%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95"><span class="toc-number">8.</span> <span class="toc-text">挂载windows共享目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">9.</span> <span class="toc-text">设置启动自动运行命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">清理内存占用</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/26/prometheus%20+%20Grafana%E7%9B%91%E6%8E%A7clash%E6%B5%81%E9%87%8F/" title="prometheus + Grafana监控ShellCrash流量"><img src="https://file.ciiki.eu.org/2024/09/20240926162536.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="prometheus + Grafana监控ShellCrash流量"/></a><div class="content"><a class="title" href="/2024/09/26/prometheus%20+%20Grafana%E7%9B%91%E6%8E%A7clash%E6%B5%81%E9%87%8F/" title="prometheus + Grafana监控ShellCrash流量">prometheus + Grafana监控ShellCrash流量</a><time datetime="2024-09-26T05:43:48.000Z" title="发表于 2024-09-26 13:43:48">2024-09-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/13/MinGW%E7%BC%96%E8%AF%91libopus/" title="windows下编译libopus"><img src="https://file.ciiki.eu.org/2024/09/opus-logo.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="windows下编译libopus"/></a><div class="content"><a class="title" href="/2024/09/13/MinGW%E7%BC%96%E8%AF%91libopus/" title="windows下编译libopus">windows下编译libopus</a><time datetime="2024-09-13T06:03:45.000Z" title="发表于 2024-09-13 14:03:45">2024-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/08/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E6%90%AD%E5%BB%BAAP/" title="无线网卡搭建AP"><img src="https://file.ciiki.eu.org/2024/08/80211.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无线网卡搭建AP"/></a><div class="content"><a class="title" href="/2024/08/08/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E6%90%AD%E5%BB%BAAP/" title="无线网卡搭建AP">无线网卡搭建AP</a><time datetime="2024-08-08T02:25:13.000Z" title="发表于 2024-08-08 10:25:13">2024-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/01/CMake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="CMake学习笔记"><img src="https://file.ciiki.eu.org/2023/12/cmake.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CMake学习笔记"/></a><div class="content"><a class="title" href="/2023/12/01/CMake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="CMake学习笔记">CMake学习笔记</a><time datetime="2023-12-01T01:59:45.000Z" title="发表于 2023-12-01 09:59:45">2023-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/30/VSCode%E9%85%8D%E7%BD%AEssh%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" title="VSCode配置ssh免密登录"><img src="https://file.ciiki.eu.org/2023/11/sshvscode.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VSCode配置ssh免密登录"/></a><div class="content"><a class="title" href="/2023/11/30/VSCode%E9%85%8D%E7%BD%AEssh%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" title="VSCode配置ssh免密登录">VSCode配置ssh免密登录</a><time datetime="2023-11-30T05:39:33.000Z" title="发表于 2023-11-30 13:39:33">2023-11-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By ciiki</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.ciiki.eu.org/.netlify/functions/twikoo',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.ciiki.eu.org/.netlify/functions/twikoo',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
