@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ciiki.eu.org/2023/11/03/hexo-butterfly%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</loc>
+    
+    <lastmod>2024-09-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://ciiki.eu.org/2024/09/26/prometheus%20+%20Grafana%E7%9B%91%E6%8E%A7clash%E6%B5%81%E9%87%8F/</loc>
     
     <lastmod>2024-09-26</lastmod>
@@ -75,15 +84,6 @@
   
   <url>
     <loc>http://ciiki.eu.org/2023/09/07/oh-my-zsh/</loc>
-    
-    <lastmod>2024-02-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/2023/11/03/hexo-butterfly%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</loc>
     
     <lastmod>2024-02-18</lastmod>
     
