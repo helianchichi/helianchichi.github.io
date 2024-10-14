@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://ciiki.eu.org/2023/11/03/hexo-butterfly%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2024-09-27</lastmod>
+    <loc>http://ciiki.eu.org/2024/09/27/bitbucket%E5%A4%9A%E8%B4%A6%E6%88%B7git%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2024-10-14</lastmod>
+  </url>
+  <url>
+    <loc>http://ciiki.eu.org/2024/10/14/%E5%86%85%E5%AD%98%E9%87%8D%E5%8F%A0%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2024-10-14</lastmod>
   </url>
   <url>
     <loc>http://ciiki.eu.org/2024/09/26/prometheus%20+%20Grafana%E7%9B%91%E6%8E%A7clash%E6%B5%81%E9%87%8F/</loc>
-    <lastmod>2024-09-26</lastmod>
+    <lastmod>2024-09-27</lastmod>
+  </url>
+  <url>
+    <loc>http://ciiki.eu.org/2023/11/03/hexo-butterfly%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2024-09-27</lastmod>
   </url>
   <url>
     <loc>http://ciiki.eu.org/2023/05/06/%E9%9A%8F%E8%BA%ABwifi%E8%BF%90%E8%A1%8Cshellclash%E5%92%8CAdguardHome/</loc>
