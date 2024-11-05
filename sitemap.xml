@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ciiki.eu.org/2024/11/05/libx265%E7%BC%96%E7%A0%81/</loc>
+    
+    <lastmod>2024-11-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://ciiki.eu.org/2024/09/27/bitbucket%E5%A4%9A%E8%B4%A6%E6%88%B7git%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
     
     <lastmod>2024-10-14</lastmod>
@@ -445,7 +454,7 @@
 
   <url>
     <loc>http://ciiki.eu.org/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -453,287 +462,294 @@
   
   <url>
     <loc>http://ciiki.eu.org/tags/Linux/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/C/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/C/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/cmake/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E5%B7%A5%E4%BD%9C/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/Arch64/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/ffmpeg/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/x86/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E6%B1%87%E7%BC%96/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E6%B5%81%E5%AA%92%E4%BD%93/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/opus/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/TCP/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/Windows/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/VSCode/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/SSH/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/git/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E6%8A%98%E8%85%BE/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/Hexo/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/ShellCrash/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/golang/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/grafana/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/prometheus/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/UDP/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/RTP/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/vector/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/telegram/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/x-ui/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/arm/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/qemu/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/zerotier/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/cloudflare/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/asm/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/OpenStick/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E9%9A%8F%E8%BA%ABwifi/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/tags/AdguardHome/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/h265/</loc>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -742,35 +758,35 @@
   
   <url>
     <loc>http://ciiki.eu.org/categories/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/categories/%E9%9A%8F%E8%BA%ABWIFI/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/categories/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://ciiki.eu.org/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2024-10-14</lastmod>
+    <lastmod>2024-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
