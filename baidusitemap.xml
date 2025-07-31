@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://ciiki.eu.org/2025/07/31/qemu%E5%AE%89%E8%A3%85mips64el%E6%9E%B6%E6%9E%84debian12%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
+    <lastmod>2025-07-31</lastmod>
+  </url>
+  <url>
     <loc>http://ciiki.eu.org/2025/05/29/jemalloc%E6%8E%92%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/</loc>
     <lastmod>2025-05-29</lastmod>
   </url>
