@@ -574,7 +574,7 @@
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/Arch64/</loc>
+    <loc>http://ciiki.eu.org/tags/aarch64/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -589,6 +589,13 @@
   
   <url>
     <loc>http://ciiki.eu.org/tags/cmake/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/Arch64/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -617,6 +624,20 @@
   
   <url>
     <loc>http://ciiki.eu.org/tags/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/MSYS2/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/GCC/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -700,20 +721,6 @@
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/UDP/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/RTP/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ciiki.eu.org/tags/%E6%8A%98%E8%85%BE/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -728,63 +735,28 @@
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/telegram/</loc>
+    <loc>http://ciiki.eu.org/tags/jemalloc/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/x-ui/</loc>
+    <loc>http://ciiki.eu.org/tags/c/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/vector/</loc>
+    <loc>http://ciiki.eu.org/tags/linux/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/arm/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/qemu/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/zerotier/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/cloudflare/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://ciiki.eu.org/tags/h265/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -819,14 +791,98 @@
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/asm/</loc>
+    <loc>http://ciiki.eu.org/tags/qemu/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/tags/h265/</loc>
+    <loc>http://ciiki.eu.org/tags/mips/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/vector/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/clangd/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/UDP/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/RTP/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/arm/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/telegram/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/x-ui/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/zerotier/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/cloudflare/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/tags/asm/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -860,62 +916,6 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>http://ciiki.eu.org/tags/aarch64/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/MSYS2/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/GCC/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/jemalloc/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/c/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/linux/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/clangd/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/tags/mips/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
@@ -926,7 +926,21 @@
   </url>
   
   <url>
+    <loc>http://ciiki.eu.org/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://ciiki.eu.org/categories/%E9%9A%8F%E8%BA%ABWIFI/</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ciiki.eu.org/categories/%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -947,21 +961,7 @@
   </url>
   
   <url>
-    <loc>http://ciiki.eu.org/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ciiki.eu.org/categories/%E8%BD%AF%E8%80%83/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ciiki.eu.org/categories/%E5%8A%A0%E5%AF%86/</loc>
     <lastmod>2025-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
