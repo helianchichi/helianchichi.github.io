@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ciiki的博客</title><meta name="author" content="ciiki"><meta name="copyright" content="ciiki"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="ciiki的博客">
+<meta property="og:url" content="https://ciiki.eu.org/page/5/index.html">
+<meta property="og:site_name" content="ciiki的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ciiki.eu.org/img/avatar.jpg">
+<meta property="article:author" content="ciiki">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ciiki.eu.org/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ciiki.eu.org/page/5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"4LGINLYFM2","apiKey":"873fffcc94d05a1f3d777e7270350044","indexName":"ciikiblog","hitsPerPage":6,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，耗时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ciiki的博客',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">60</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/index.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">ciiki的博客</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">ciiki的博客</h1><div id="site_social_icons"><a class="social-icon" href="https://t.me/ciiki_li" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="mailto:ciiki@ciiki.eu.org" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover"><a href="/2023/05/17/%E8%A7%A3%E5%86%B3Dell%E5%8F%B0%E5%BC%8F%E6%9C%BA%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABCTIA%E8%80%B3%E6%9C%BA%E9%BA%A6%E5%85%8B%E9%A3%8E/" title="解决Dell台式机无法识别CTIA麦克风"><img class="post-bg" src="https://s2.loli.net/2023/05/17/pFcUQyDV1JINoxZ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="解决Dell台式机无法识别CTIA麦克风"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/17/%E8%A7%A3%E5%86%B3Dell%E5%8F%B0%E5%BC%8F%E6%9C%BA%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABCTIA%E8%80%B3%E6%9C%BA%E9%BA%A6%E5%85%8B%E9%A3%8E/" title="解决Dell台式机无法识别CTIA麦克风">解决Dell台式机无法识别CTIA麦克风</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-17T06:20:37.000Z" title="发表于 2023-05-17 14:20:37">2023-05-17</time></span></div><div class="content">工作的机子是Dell OptiPlex5060，前后面板分别有个3.5mm耳机孔，插上线控耳机只能听声音，无法使用麦克风。工作有时还会开在线视频会议，无法发言难受的一批，查了各种资料，网上这种问题提出者很多，但是真正能解决问题的很少，于是整理记录此文，说不定自己还会遇到，就不用再查一遍资料了，如果能给后人提供帮助，也是很荣幸的 首先去设备管理器，音频输入和输出下，插入耳机看到的设备为Realtek(R) Audio 然后去dell官网支持https://www.dell.com/support/home/zh-cn，识别产品或搜索支持，输入自己的型号(如果不行就输入OptiPlex 7090，驱动比较新)，选择驱动程序和下载，手动查找适合 OptiPlex 5060 的特定驱动程序，搜索audio 先安装搜索到的Waves MaxxAudio Pro 应用程序，再安装Realtek 高保真声卡驱动程序，然后会被要求重启电脑 重启后设备管理器里Realtek(R) Audio已经变成了Speakers/Headphones (Realtek(R) Audio)，重新插耳机应该会弹出...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2023/05/14/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%96%B9%E6%A1%88/" title="内网穿透方案"><img class="post-bg" src="https://s2.loli.net/2023/05/07/qjYgHB2cVKiydko.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内网穿透方案"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/14/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%96%B9%E6%A1%88/" title="内网穿透方案">内网穿透方案</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-14T10:02:38.000Z" title="发表于 2023-05-14 18:02:38">2023-05-14</time></span></div><div class="content">前言简单介绍一下NAT技术，NAT全称Network Address Translation，网络地址转换，简单来说就是把内网ip转为公网ip。由于ipv4地址逐渐枯竭，ip变的十分宝贵，出现了NAT这种技术，它可以让多个设备通过NAT路由器使用同一个公网ip访问互联网，而路由器之下的这些设备之间使用内网ip进行区分。这项技术很大程度的延缓了ipv4不够用的窘境，弊端则是很难从公网去访问内网资源。目前家用宽带很少能够分到公网ip了，基本上是多户共用一个公网ip，对于有从公网访问内网的需求（比如访问家里的摄像头，nas，服务器）的人来说，那就只有做一下内网穿透了。 目前有很多成熟的内网穿透方案，比如花生壳，frp等等。花生壳付费，frp虽然免费开源，但还是需要购买一台具有公网ip的服务器作为中转服务器，一年的费用也不低，像我这种白嫖怪花钱是不可能花钱的，于是把目光定在了zerotier和cloudflare提供的tunnel上 zerotier 注册账号 https://www.zerotier.com/ ，注册完成后登录后台点击Create A Network，会生成一个带有NE...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2023/05/14/x-ui/" title="x-ui"><img class="post-bg" src="https://s2.loli.net/2023/05/29/xjvWXSsnKZembIL.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="x-ui"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/14/x-ui/" title="x-ui">x-ui</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-14T06:41:36.000Z" title="发表于 2023-05-14 14:41:36">2023-05-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E8%BA%ABWIFI/">随身WIFI</a></span></div><div class="content">x-ui是个小型的服务器状态面板，很多人用它来快速的配置节点，这里我只是希望用它的web界面看一下它的状态，另外用telegram接受状态通知。 首先感谢x-ui开源项目，https://github.com/FranzKafkaYu/x-ui 一键安装脚本 1bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh) 确认是否继续,如选择n则跳过本次端口与账户密码设定[y&#x2F;n]: y 然后分别设置用户名，密码，端口 安装完成后在浏览器使用ip:端口即可进入后台 需要注意在面版设置里首次进入会随机生成面板 url 根路径，然后根据需要可以自己再改一下 telegram提醒里需要设置电报机器人Token、电报机器人ChatId、定时通知策略然后启用电报机器人，保存配置，重启面版。 当然，在首页还是关掉xray运行吧，毕竟内存不大，设置好大概就是这个样子。 telegram也可以收到通知 </div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2023/05/06/%E9%9A%8F%E8%BA%ABwifi%E8%BF%90%E8%A1%8Cshellclash%E5%92%8CAdguardHome/" title="随身wifi运行ShellCrash和AdguardHome"><img class="post-bg" src="https://s2.loli.net/2023/05/07/lqHZzvj4icNosJ2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随身wifi运行ShellCrash和AdguardHome"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/06/%E9%9A%8F%E8%BA%ABwifi%E8%BF%90%E8%A1%8Cshellclash%E5%92%8CAdguardHome/" title="随身wifi运行ShellCrash和AdguardHome">随身wifi运行ShellCrash和AdguardHome</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-06T08:43:41.000Z" title="发表于 2023-05-06 16:43:41">2023-05-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E8%BA%ABWIFI/">随身WIFI</a></span></div><div class="content">  前言上一篇文章中将随身wifi刷成了debian系统，本篇基于此为随身wifi安装ShellCrash和AdguardHome实现透明代理和广告拦截功能。（也可做为通用旁路网关的配置指南） 资源下载 UPX 官方下载：https://github.com/upx/upx/releases 下载 upx-xxx-win64.zip 文件  ShellCrash  官方下载：https://github.com/juewuy/ShellCrash/raw/master/bin/ShellCrash.tar.gz  Clash.Meta 内核  官方下载：https://github.com/MetaCubeX/Clash.Meta/releases 下载 clash.meta-linux-arm64-cgo-alpha-xxx.gz 文件  AdGuardHome  官方下载：https://github.com/AdguardTeam/AdGuardHome/releases 下载 AdGuardHome_linux_arm64.tar.gz 文件   ShellCrashSh...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2023/05/06/%E9%9A%8F%E8%BA%ABwifi%E5%88%B7%E5%85%A5linux/" title="随身wifi刷入Linux"><img class="post-bg" src="https://s2.loli.net/2023/05/07/qjYgHB2cVKiydko.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随身wifi刷入Linux"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/06/%E9%9A%8F%E8%BA%ABwifi%E5%88%B7%E5%85%A5linux/" title="随身wifi刷入Linux">随身wifi刷入Linux</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-05-06T08:42:15.000Z" title="发表于 2023-05-06 16:42:15">2023-05-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E8%BA%ABWIFI/">随身WIFI</a></span></div><div class="content">前言介绍随身wifi原本的作用为开热点以供手机电脑等设备连接上网，工作原理和手机热点几乎一样，不过大多数随身wifi是通过焊接在其上的esim连入互联网，商家也是凭借esim月租套餐来挣钱。为了吸引顾客，有些随身wifi本身卖的很便宜，但性能并不差，可以关注酷安随身wifi话题，偶尔有随身wifi的车再叠加个红包，十元包邮就可以买下一个。本文记录基于OpenStick项目将随身wifi刷成Linux发行版debian，后续将其配置为网关服务器以及DNS服务器，同时作为小型服务器运行一些任务，踩了不少坑，写文以记录 准备工具 螺丝刀 windows系统电脑 随身wifi资源集 一颗不怕折腾的心  到手到手后大概就长这个样子，小巧但不怎么精致（小小的也很可爱呢…雾）。   用螺丝刀拆掉后面几颗螺丝，查看板子丝印，可以看到UFI003，这就是高通方案，可以刷Linux，如果是中兴微的后续就不用看了，刷不了的，具体哪些版本可以刷可以参考OpenStick的WIKI:https://www.kancloud.cn/handsomehacker/openstick/2636505   刷机安...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2023/03/24/ffmpeg%20SDK%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89/" title="ffmpeg SDK学习（2）"><img class="post-bg" src="https://s3.uuu.ovh/imgs/2023/03/24/935af5d1d1290d70.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ffmpeg SDK学习（2）"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/24/ffmpeg%20SDK%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89/" title="ffmpeg SDK学习（2）">ffmpeg SDK学习（2）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-24T09:27:38.000Z" title="发表于 2023-03-24 17:27:38">2023-03-24</time></span></div><div class="content">ffmpeg sdk 解码 demo上一篇文章《ffmpeg SDK学习（1）》简单编译了一下ffmpeg，生成了可执行程序bin目录，如果想调用ffmpeg自己实现编解码功能，则需要用到静态库lib目录。官方同样提供了相应的调用库的demo例子，本文记录使用官方demo之中的decode_video.c实现H.264的解码。 首先需要H264裸流使用编译出的ffmpeg可执行程序即可从视频里提取H264裸流 123cd /root/study/ffmpeg/build64/bin#如果想调整视频分辨率 ./ffmpeg -i video.mp4 -vf scale=352:288 -y output.mp4./ffmpeg -i output.mp4 -codec copy -f h264 video.h264  拷贝生成的video.h264至examples12cp video.h264 /root/study/ffmpeg/build64/share/ffmpeg/examples/cd /root/study/ffmpeg/build64/share/ffmpeg/ex...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2023/03/24/ffmpeg%20SDK%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/" title="ffmpeg SDK学习（1）"><img class="post-bg" src="https://s3.uuu.ovh/imgs/2023/03/24/935af5d1d1290d70.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ffmpeg SDK学习（1）"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/24/ffmpeg%20SDK%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/" title="ffmpeg SDK学习（1）">ffmpeg SDK学习（1）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-03-24T08:20:46.000Z" title="发表于 2023-03-24 16:20:46">2023-03-24</time></span></div><div class="content">linux下编译ffmpeg静态库环境： Ubuntu Desktop 20.04.5 LTS gcc version 9.4.0 1.首先安装依赖以下为必须项 123apt-get install diffutils make pkg-config yasmapt-get install libsdl2-2.0apt-get install libsdl2-dev 因为ffmpeg编码H264需要libx264，所以如果要用sdk来编码则需要安装libx264-dev，只解码的话是不需要的 1apt-get install libx264-dev  2.拉取源码我当前路径为&#x2F;root&#x2F;study 123git clone https://git.ffmpeg.org/ffmpeg.git ffmpegcd /root/study/ffmpeg 会在当前路径下生成ffmpeg目录，然后进入该目录 1cd /root/study/ffmpeg  3.配置编译选项注意--prefix=后为安装路径，必须用绝对路径，如果用相对路径后续会出问题，如果第二步没有安装li...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-PCM%E6%A0%BC%E5%BC%8F/" title="音视频笔记（2）--PCM格式"><img class="post-bg" src="https://file.ciiki.eu.org/2023/11/pcm.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="音视频笔记（2）--PCM格式"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-PCM%E6%A0%BC%E5%BC%8F/" title="音视频笔记（2）--PCM格式">音视频笔记（2）--PCM格式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-12-21T07:15:37.000Z" title="发表于 2022-12-21 15:15:37">2022-12-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/">音视频学习</a></span></div><div class="content">参数（1）采样位深：每个采样点的bit数 8bits: 0~255 16bits: 0~65535 （2）采样率：每秒采样次数 16KHz：每秒采16000个采样点 （3）声道数 双声道(stereo)：左-右-左-右… （4）字节序 一般使用小端存储结构，16LE：低字节高字节-低字节高字节-低字节高字节… 处理代码来自雷霄骅，致敬雷神，雷神千古！ 分离test_stereo_s16le.pcm左右声道1234567891011121314151617181920212223242526/** * Split Left and Right channel of 16LE PCM file. * @param url  Location of PCM file. * */int simplest_pcm16le_split(char *url)&#123;	FILE *fp=fopen(url,&quot;rb+&quot;);	FILE *fp1=fopen(&quot;output_l.pcm&quot;,&quot;wb+&quot;);	FILE *fp2=fopen(&...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-YUV%E6%A0%BC%E5%BC%8F/" title="音视频笔记（1）--YUV格式"><img class="post-bg" src="https://file.ciiki.eu.org/2023/11/yuv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="音视频笔记（1）--YUV格式"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-YUV%E6%A0%BC%E5%BC%8F/" title="音视频笔记（1）--YUV格式">音视频笔记（1）--YUV格式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-12-21T05:30:45.000Z" title="发表于 2022-12-21 13:30:45">2022-12-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/">音视频学习</a></span></div><div class="content">来源我们都知道RGB格式表示色彩，但是之前的显示器只能解析灰白的图像，为了兼容老旧设备，自然不能用RGB格式表示图像，于是YUV出现了。它可以将RGB三个分量转换成YUV三个分量，对于可以显示彩色的设备，解析Y、U、V三个分量，显示出彩色；对于老旧黑白设备，仅解析Y分量，就可以显示出黑白的图像。 YUV和YCbCr、YPbPr几个概念是一样的，Y表示亮度（Luminance），也就是灰度，U是色度（Chrominance），V是浓度（Chroma），而人眼对亮度分量Y的敏感度是高于UV分量的，所以YUV相对于RGB还可以减少数据量 RGB转YUVY &#x3D; 0.299R + 0.587G + 0.114*B U &#x3D; -0.147R - 0.289G + 0.436B &#x3D; 0.492(B-Y) V &#x3D; 0.615R - 0.515G - 0.100B &#x3D; 0.877(R-Y) YUV转RGBR &#x3D; Y + 1.140*V G &#x3D; Y - 0.394U - 0.581V B &#x3D; Y + 2.032*U 格式分...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2022/12/14/%E5%88%86%E8%BE%A8%E7%8E%87%E6%A0%BC%E5%BC%8F%E6%B1%87%E6%80%BB/" title="分辨率格式汇总"><img class="post-bg" src="https://s2.loli.net/2023/05/29/olMjCHQJymABUz9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分辨率格式汇总"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/14/%E5%88%86%E8%BE%A8%E7%8E%87%E6%A0%BC%E5%BC%8F%E6%B1%87%E6%80%BB/" title="分辨率格式汇总">分辨率格式汇总</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-12-14T06:34:03.000Z" title="发表于 2022-12-14 14:34:03">2022-12-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/">工作笔记</a></span></div><div class="content">   分辨率 width height 像素数    4K 3840 2160 8,294,400   1080P 1920 1080 2,073,600   SXGA 1280 1024 1,310,720   720P 1280 720 921,600   XGA 1024 768 786,432   W4CIF 1024 576 589,824   480P 854 480 409,902   4CIF 704 576 405,504   360P 600 360 216,000   WCIF 512 288 147,456   CIF 352 288 101,376   QCIF 176 144 25,344   </div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/4/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/6/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">ciiki</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">60</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://t.me/ciiki_li" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="mailto:ciiki@ciiki.eu.org" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/15/perf%E7%81%AB%E7%84%B0%E5%9B%BE/" title="perf火焰图"><img src="https://file.ciiki.eu.org/2026/01/15/1768447990.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="perf火焰图"/></a><div class="content"><a class="title" href="/2026/01/15/perf%E7%81%AB%E7%84%B0%E5%9B%BE/" title="perf火焰图">perf火焰图</a><time datetime="2026-01-15T03:28:10.000Z" title="发表于 2026-01-15 11:28:10">2026-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/29/Debain13%E5%AE%89%E8%A3%85btrfs%E5%92%8C%E5%BF%AB%E7%85%A7/" title="Debain13安装btrfs和快照"><img src="https://file.ciiki.eu.org/2025/09/29/1759123553.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Debain13安装btrfs和快照"/></a><div class="content"><a class="title" href="/2025/09/29/Debain13%E5%AE%89%E8%A3%85btrfs%E5%92%8C%E5%BF%AB%E7%85%A7/" title="Debain13安装btrfs和快照">Debain13安装btrfs和快照</a><time datetime="2025-09-29T05:17:25.000Z" title="发表于 2025-09-29 13:17:25">2025-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/31/qemu%E5%AE%89%E8%A3%85mips64el%E6%9E%B6%E6%9E%84debian12%E8%99%9A%E6%8B%9F%E6%9C%BA/" title="qemu安装mips64el架构debian12虚拟机"><img src="https://file.ciiki.eu.org/2025/07/31/1753925113.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="qemu安装mips64el架构debian12虚拟机"/></a><div class="content"><a class="title" href="/2025/07/31/qemu%E5%AE%89%E8%A3%85mips64el%E6%9E%B6%E6%9E%84debian12%E8%99%9A%E6%8B%9F%E6%9C%BA/" title="qemu安装mips64el架构debian12虚拟机">qemu安装mips64el架构debian12虚拟机</a><time datetime="2025-07-31T01:18:36.000Z" title="发表于 2025-07-31 09:18:36">2025-07-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/29/jemalloc%E6%8E%92%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/" title="jemalloc排查内存泄露"><img src="https://file.ciiki.eu.org/2025/05/29/1748489761.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="jemalloc排查内存泄露"/></a><div class="content"><a class="title" href="/2025/05/29/jemalloc%E6%8E%92%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/" title="jemalloc排查内存泄露">jemalloc排查内存泄露</a><time datetime="2025-05-29T03:33:52.000Z" title="发表于 2025-05-29 11:33:52">2025-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/18/vscode%E9%85%8D%E7%BD%AEclangd%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/" title="vscode配置clangd代码提示"><img src="https://file.ciiki.eu.org/2025/04/18/1744976763.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vscode配置clangd代码提示"/></a><div class="content"><a class="title" href="/2025/04/18/vscode%E9%85%8D%E7%BD%AEclangd%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/" title="vscode配置clangd代码提示">vscode配置clangd代码提示</a><time datetime="2025-04-18T11:40:25.000Z" title="发表于 2025-04-18 19:40:25">2025-04-18</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%8A%A0%E5%AF%86/"><span class="card-category-list-name">加密</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">学习</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">工作笔记</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%BD%AF%E8%80%83/"><span class="card-category-list-name">软考</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E8%BA%ABWIFI/"><span class="card-category-list-name">随身WIFI</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">音视频学习</span><span class="card-category-list-count">5</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 1.1em; color: #999">汇编</a> <a href="/tags/cmake/" style="font-size: 1.21em; color: #999ea4">cmake</a> <a href="/tags/GCC/" style="font-size: 1.1em; color: #999">GCC</a> <a href="/tags/ffmpeg/" style="font-size: 1.27em; color: #99a0a9">ffmpeg</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.1em; color: #999">操作系统</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 1.16em; color: #999b9e">虚拟机</a> <a href="/tags/jemalloc/" style="font-size: 1.1em; color: #999">jemalloc</a> <a href="/tags/telegram/" style="font-size: 1.1em; color: #999">telegram</a> <a href="/tags/%E6%B5%81%E5%AA%92%E4%BD%93/" style="font-size: 1.16em; color: #999b9e">流媒体</a> <a href="/tags/arm/" style="font-size: 1.1em; color: #999">arm</a> <a href="/tags/VSCode/" style="font-size: 1.16em; color: #999b9e">VSCode</a> <a href="/tags/grafana/" style="font-size: 1.1em; color: #999">grafana</a> <a href="/tags/Arch64/" style="font-size: 1.16em; color: #999b9e">Arch64</a> <a href="/tags/C/" style="font-size: 1.5em; color: #99a9bf">C++</a> <a href="/tags/Windows/" style="font-size: 1.33em; color: #99a2af">Windows</a> <a href="/tags/linux/" style="font-size: 1.16em; color: #999b9e">linux</a> <a href="/tags/aarch64/" style="font-size: 1.1em; color: #999">aarch64</a> <a href="/tags/zerotier/" style="font-size: 1.1em; color: #999">zerotier</a> <a href="/tags/AdguardHome/" style="font-size: 1.1em; color: #999">AdguardHome</a> <a href="/tags/golang/" style="font-size: 1.1em; color: #999">golang</a> <a href="/tags/x-ui/" style="font-size: 1.1em; color: #999">x-ui</a> <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" style="font-size: 1.44em; color: #99a7ba">音视频</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 1.21em; color: #999ea4">网络</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.1em; color: #999">内网穿透</a> <a href="/tags/cloudflare/" style="font-size: 1.1em; color: #999">cloudflare</a> <a href="/tags/TCP/" style="font-size: 1.1em; color: #999">TCP</a> <a href="/tags/MSYS2/" style="font-size: 1.16em; color: #999b9e">MSYS2</a> <a href="/tags/asm/" style="font-size: 1.27em; color: #99a0a9">asm</a> <a href="/tags/clangd/" style="font-size: 1.1em; color: #999">clangd</a> <a href="/tags/mips/" style="font-size: 1.1em; color: #999">mips</a> <a href="/tags/SSH/" style="font-size: 1.1em; color: #999">SSH</a> <a href="/tags/gdb/" style="font-size: 1.1em; color: #999">gdb</a> <a href="/tags/opus/" style="font-size: 1.1em; color: #999">opus</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c++</a> <a href="/tags/%E6%8A%98%E8%85%BE/" style="font-size: 1.39em; color: #99a4b4">折腾</a> <a href="/tags/C/" style="font-size: 1.39em; color: #99a4b4">C</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.16em; color: #999b9e">算法</a> <a href="/tags/x86/" style="font-size: 1.16em; color: #999b9e">x86</a> <a href="/tags/UDP/" style="font-size: 1.1em; color: #999">UDP</a> <a href="/tags/ShellCrash/" style="font-size: 1.16em; color: #999b9e">ShellCrash</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              九月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/12/">
+            <span class="card-archive-list-date">
+              十二月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/11/">
+            <span class="card-archive-list-date">
+              十一月 2024
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/10/">
+            <span class="card-archive-list-date">
+              十月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">60</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">38.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-15T05:24:25.573Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2026 By ciiki</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div id="algolia-search-input"><div class="ais-SearchBox"><form class="ais-SearchBox-form" action="" role="search" novalidate=""><input class="ais-SearchBox-input" type="search" placeholder="搜索文章" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="512" aria-label="Search"/><button class="ais-SearchBox-submit" type="submit" title="Submit the search query" style="display:none;"><svg class="ais-SearchBox-submitIcon" width="10" height="10" viewBox="0 0 40 40" aria-hidden="true"><path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"></path></svg></button></form></div><hr/><div id="algolia-search-results"><div id="algolia-hits"><div id="algolia-hits-empty" style="display:none;"></div><div class="ais-Hits" style="display:none;"><ol class="ais-Hits-list"></ol></div></div><div class="ais-Pagination" id="algolia-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="algolia-info"><span class="ais-Stats-text"></span><a class="algolia-poweredBy" href="https://www.algolia.com/?utm_source=algoliasearch.js&amp;utm_medium=website&amp;utm_content=localhost&amp;utm_campaign=poweredby" target="_blank" aria-label="Search by Algolia" rel="noopener noreferrer"><svg class="ais-PoweredBy-logo" height="1.2em" viewBox="0 0 572 64" style="width: auto;"><path fill="#36395A" d="M16 48.3c-3.4 0-6.3-.6-8.7-1.7A12.4 12.4 0 0 1 1.9 42C.6 40 0 38 0 35.4h6.5a6.7 6.7 0 0 0 3.9 6c1.4.7 3.3 1.1 5.6 1.1 2.2 0 4-.3 5.4-1a7 7 0 0 0 3-2.4 6 6 0 0 0 1-3.4c0-1.5-.6-2.8-1.9-3.7-1.3-1-3.3-1.6-5.9-1.8l-4-.4c-3.7-.3-6.6-1.4-8.8-3.4a10 10 0 0 1-3.3-7.9c0-2.4.6-4.6 1.8-6.4a12 12 0 0 1 5-4.3c2.2-1 4.7-1.6 7.5-1.6s5.5.5 7.6 1.6a12 12 0 0 1 5 4.4c1.2 1.8 1.8 4 1.8 6.7h-6.5a6.4 6.4 0 0 0-3.5-5.9c-1-.6-2.6-1-4.4-1s-3.2.3-4.4 1c-1.1.6-2 1.4-2.6 2.4-.5 1-.8 2-.8 3.1a5 5 0 0 0 1.5 3.6c1 1 2.6 1.7 4.7 1.9l4 .3c2.8.2 5.2.8 7.2 1.8 2.1 1 3.7 2.2 4.9 3.8a9.7 9.7 0 0 1 1.7 5.8c0 2.5-.7 4.7-2 6.6a13 13 0 0 1-5.6 4.4c-2.4 1-5.2 1.6-8.4 1.6Zm35.6 0c-2.6 0-4.8-.4-6.7-1.3a13 13 0 0 1-4.7-3.5 17.1 17.1 0 0 1-3.6-10.4v-1c0-2 .3-3.8 1-5.6a13 13 0 0 1 7.3-8.3 15 15 0 0 1 6.3-1.4A13.2 13.2 0 0 1 64 24.3c1 2.2 1.6 4.6 1.6 7.2V34H39.4v-4.3h21.8l-1.8 2.2c0-2-.3-3.7-.9-5.1a7.3 7.3 0 0 0-2.7-3.4c-1.2-.7-2.7-1.1-4.6-1.1s-3.4.4-4.7 1.3a8 8 0 0 0-2.9 3.6c-.6 1.5-.9 3.3-.9 5.4 0 2 .3 3.7 1 5.3a7.9 7.9 0 0 0 2.8 3.7c1.3.8 3 1.3 5 1.3s3.8-.5 5.1-1.3c1.3-1 2.1-2 2.4-3.2h6a11.8 11.8 0 0 1-7 8.7 16 16 0 0 1-6.4 1.2ZM80 48c-2.2 0-4-.3-5.7-1a8.4 8.4 0 0 1-3.7-3.3 9.7 9.7 0 0 1-1.3-5.2c0-2 .5-3.8 1.5-5.2a9 9 0 0 1 4.3-3.1c1.8-.7 4-1 6.7-1H89v4.1h-7.5c-2 0-3.4.5-4.4 1.4-1 1-1.6 2.1-1.6 3.6s.5 2.7 1.6 3.6c1 1 2.5 1.4 4.4 1.4 1.1 0 2.2-.2 3.2-.7 1-.4 1.9-1 2.6-2 .6-1 1-2.4 1-4.2l1.7 2.1c-.2 2-.7 3.8-1.5 5.2a9 9 0 0 1-3.4 3.3 12 12 0 0 1-5.3 1Zm9.5-.7v-8.8h-1v-10c0-1.8-.5-3.2-1.4-4.1-1-1-2.4-1.4-4.2-1.4a142.9 142.9 0 0 0-10.2.4v-5.6a74.8 74.8 0 0 1 8.6-.4c3 0 5.5.4 7.5 1.2s3.4 2 4.4 3.6c1 1.7 1.4 4 1.4 6.7v18.4h-5Zm12.9 0V17.8h5v12.3h-.2c0-4.2 1-7.4 2.8-9.5a11 11 0 0 1 8.3-3.1h1v5.6h-2a9 9 0 0 0-6.3 2.2c-1.5 1.5-2.2 3.6-2.2 6.4v15.6h-6.4Zm34.4 1a15 15 0 0 1-6.6-1.3c-1.9-.9-3.4-2-4.7-3.5a15.5 15.5 0 0 1-2.7-5c-.6-1.7-1-3.6-1-5.4v-1c0-2 .4-3.8 1-5.6a15 15 0 0 1 2.8-4.9c1.3-1.5 2.8-2.6 4.6-3.5a16.4 16.4 0 0 1 13.3.2c2 1 3.5 2.3 4.8 4a12 12 0 0 1 2 6H144c-.2-1.6-1-3-2.2-4.1a7.5 7.5 0 0 0-5.2-1.7 8 8 0 0 0-4.7 1.3 8 8 0 0 0-2.8 3.6 13.8 13.8 0 0 0 0 10.3c.6 1.5 1.5 2.7 2.8 3.6s2.8 1.3 4.8 1.3c1.5 0 2.7-.2 3.8-.8a7 7 0 0 0 2.6-2c.7-1 1-2 1.2-3.2h6.2a11 11 0 0 1-2 6.2 15.1 15.1 0 0 1-11.8 5.5Zm19.7-1v-40h6.4V31h-1.3c0-3 .4-5.5 1.1-7.6a9.7 9.7 0 0 1 3.5-4.8A9.9 9.9 0 0 1 172 17h.3c3.5 0 6 1.1 7.9 3.5 1.7 2.3 2.6 5.7 2.6 10v16.8h-6.4V29.6c0-2.1-.6-3.8-1.8-5a6.4 6.4 0 0 0-4.8-1.8c-2 0-3.7.7-5 2a7.8 7.8 0 0 0-1.9 5.5v17h-6.4Zm63.8 1a12.2 12.2 0 0 1-10.9-6.2 19 19 0 0 1-1.8-7.3h1.4v12.5h-5.1v-40h6.4v19.8l-2 3.5c.2-3.1.8-5.7 1.9-7.7a11 11 0 0 1 4.4-4.5c1.8-1 3.9-1.5 6.1-1.5a13.4 13.4 0 0 1 12.8 9.1c.7 1.9 1 3.8 1 6v1c0 2.2-.3 4.1-1 6a13.6 13.6 0 0 1-13.2 9.4Zm-1.2-5.5a8.4 8.4 0 0 0 7.9-5c.7-1.5 1.1-3.3 1.1-5.3s-.4-3.8-1.1-5.3a8.7 8.7 0 0 0-3.2-3.6 9.6 9.6 0 0 0-9.2-.2 8.5 8.5 0 0 0-3.3 3.2c-.8 1.4-1.3 3-1.3 5v2.3a9 9 0 0 0 1.3 4.8 9 9 0 0 0 3.4 3c1.4.7 2.8 1 4.4 1Zm27.3 3.9-10-28.9h6.5l9.5 28.9h-6Zm-7.5 12.2v-5.7h4.9c1 0 2-.1 2.9-.4a4 4 0 0 0 2-1.4c.4-.7.9-1.6 1.2-2.7l8.6-30.9h6.2l-9.3 32.4a14 14 0 0 1-2.5 5 8.9 8.9 0 0 1-4 2.8c-1.5.6-3.4.9-5.6.9h-4.4Zm9-12.2v-5.2h6.4v5.2H248Z"></path><path fill="#003DFF" d="M534.4 9.1H528a.8.8 0 0 1-.7-.7V1.8c0-.4.2-.7.6-.8l6.5-1c.4 0 .8.2.9.6v7.8c0 .4-.4.7-.8.7zM428 35.2V.8c0-.5-.3-.8-.7-.8h-.2l-6.4 1c-.4 0-.7.4-.7.8v35c0 1.6 0 11.8 12.3 12.2.5 0 .8-.4.8-.8V43c0-.4-.3-.7-.6-.8-4.5-.5-4.5-6-4.5-7zm106.5-21.8H528c-.4 0-.7.4-.7.8v34c0 .4.3.8.7.8h6.5c.4 0 .8-.4.8-.8v-34c0-.5-.4-.8-.8-.8zm-17.7 21.8V.8c0-.5-.3-.8-.8-.8l-6.5 1c-.4 0-.7.4-.7.8v35c0 1.6 0 11.8 12.3 12.2.4 0 .8-.4.8-.8V43c0-.4-.3-.7-.7-.8-4.4-.5-4.4-6-4.4-7zm-22.2-20.6a16.5 16.5 0 0 1 8.6 9.3c.8 2.2 1.3 4.8 1.3 7.5a19.4 19.4 0 0 1-4.6 12.6 14.8 14.8 0 0 1-5.2 3.6c-2 .9-5.2 1.4-6.8 1.4a21 21 0 0 1-6.7-1.4 15.4 15.4 0 0 1-8.6-9.3 21.3 21.3 0 0 1 0-14.4 15.2 15.2 0 0 1 8.6-9.3c2-.8 4.3-1.2 6.7-1.2s4.6.4 6.7 1.2zm-6.7 27.6c2.7 0 4.7-1 6.2-3s2.2-4.3 2.2-7.8-.7-6.3-2.2-8.3-3.5-3-6.2-3-4.7 1-6.1 3c-1.5 2-2.2 4.8-2.2 8.3s.7 5.8 2.2 7.8 3.5 3 6.2 3zm-88.8-28.8c-6.2 0-11.7 3.3-14.8 8.2a18.6 18.6 0 0 0 4.8 25.2c1.8 1.2 4 1.8 6.2 1.7s.1 0 .1 0h.9c4.2-.7 8-4 9.1-8.1v7.4c0 .4.3.7.8.7h6.4a.7.7 0 0 0 .7-.7V14.2c0-.5-.3-.8-.7-.8h-13.5zm6.3 26.5a9.8 9.8 0 0 1-5.7 2h-.5a10 10 0 0 1-9.2-14c1.4-3.7 5-6.3 9-6.3h6.4v18.3zm152.3-26.5h13.5c.5 0 .8.3.8.7v33.7c0 .4-.3.7-.8.7h-6.4a.7.7 0 0 1-.8-.7v-7.4c-1.2 4-4.8 7.4-9 8h-.1a4.2 4.2 0 0 1-.5.1h-.9a10.3 10.3 0 0 1-7-2.6c-4-3.3-6.5-8.4-6.5-14.2 0-3.7 1-7.2 3-10 3-5 8.5-8.3 14.7-8.3zm.6 28.4c2.2-.1 4.2-.6 5.7-2V21.7h-6.3a9.8 9.8 0 0 0-9 6.4 10.2 10.2 0 0 0 9.1 13.9h.5zM452.8 13.4c-6.2 0-11.7 3.3-14.8 8.2a18.5 18.5 0 0 0 3.6 24.3 10.4 10.4 0 0 0 13 .6c2.2-1.5 3.8-3.7 4.5-6.1v7.8c0 2.8-.8 5-2.2 6.3-1.5 1.5-4 2.2-7.5 2.2l-6-.3c-.3 0-.7.2-.8.5l-1.6 5.5c-.1.4.1.8.5 1h.1c2.8.4 5.5.6 7 .6 6.3 0 11-1.4 14-4.1 2.7-2.5 4.2-6.3 4.5-11.4V14.2c0-.5-.4-.8-.8-.8h-13.5zm6.3 8.2v18.3a9.6 9.6 0 0 1-5.6 2h-1a10.3 10.3 0 0 1-8.8-14c1.4-3.7 5-6.3 9-6.3h6.4zM291 31.5A32 32 0 0 1 322.8 0h30.8c.6 0 1.2.5 1.2 1.2v61.5c0 1.1-1.3 1.7-2.2 1l-19.2-17a18 18 0 0 1-11 3.4 18.1 18.1 0 1 1 18.2-14.8c-.1.4-.5.7-.9.6-.1 0-.3 0-.4-.2l-3.8-3.4c-.4-.3-.6-.8-.7-1.4a12 12 0 1 0-2.4 8.3c.4-.4 1-.5 1.6-.2l14.7 13.1v-46H323a26 26 0 1 0 10 49.7c.8-.4 1.6-.2 2.3.3l3 2.7c.3.2.3.7 0 1l-.2.2a32 32 0 0 1-47.2-28.6z"></path></svg></a></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/lite/builds/browser.umd.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>
