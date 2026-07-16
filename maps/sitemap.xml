@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ciiki.eu.org/2023/12/01/CMake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2026-07-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ciiki.eu.org/2026/07/16/x264/</loc>
     
     <lastmod>2026-07-16</lastmod>
@@ -444,15 +453,6 @@
   
   <url>
     <loc>https://ciiki.eu.org/2024/11/29/C-%E5%B8%A6%E8%BF%94%E5%9B%9E%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%87%BD%E6%95%B0%E4%B8%8D%E5%8A%A0return%E5%BC%95%E5%8F%91%E7%9A%84%E8%A1%80%E6%A1%88/</loc>
-    
-    <lastmod>2026-01-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ciiki.eu.org/2023/12/01/CMake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2026-01-15</lastmod>
     
