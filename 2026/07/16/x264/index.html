@@ -1,0 +1,548 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>x264 - 高品质 H.264 编码器 | ciiki的博客</title><meta name="author" content="ciiki"><meta name="copyright" content="ciiki"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="H.264 与 x264H.264 ProfilesWikipedia - Advanced Video Coding - Profiles H.264 包含多个不同的 Profile, 用于适应不同的应用需求: Baseline Profile适合低成本和早期的移动设备使用, 目前已经很少采用 主要用于低成本应用, 对播放设备的性能要求不高, 此 profile 常见用于早期性能较低的行动设备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="x264 - 高品质 H.264 编码器">
+<meta property="og:url" content="https://ciiki.eu.org/2026/07/16/x264/index.html">
+<meta property="og:site_name" content="ciiki的博客">
+<meta property="og:description" content="H.264 与 x264H.264 ProfilesWikipedia - Advanced Video Coding - Profiles H.264 包含多个不同的 Profile, 用于适应不同的应用需求: Baseline Profile适合低成本和早期的移动设备使用, 目前已经很少采用 主要用于低成本应用, 对播放设备的性能要求不高, 此 profile 常见用于早期性能较低的行动设备">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.ciiki.eu.org/2026/07/16/1784192311.png">
+<meta property="article:published_time" content="2026-07-16T08:55:26.000Z">
+<meta property="article:modified_time" content="2026-07-16T09:05:45.990Z">
+<meta property="article:author" content="ciiki">
+<meta property="article:tag" content="x264">
+<meta property="article:tag" content="音视频">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.ciiki.eu.org/2026/07/16/1784192311.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "x264 - 高品质 H.264 编码器",
+  "url": "https://ciiki.eu.org/2026/07/16/x264/",
+  "image": "https://file.ciiki.eu.org/2026/07/16/1784192311.png",
+  "datePublished": "2026-07-16T08:55:26.000Z",
+  "dateModified": "2026-07-16T09:05:45.990Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "ciiki",
+      "url": "https://ciiki.eu.org"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ciiki.eu.org/2026/07/16/x264/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"4LGINLYFM2","apiKey":"873fffcc94d05a1f3d777e7270350044","indexName":"ciikiblog","hitsPerPage":6,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，耗时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'x264 - 高品质 H.264 编码器',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://file.ciiki.eu.org/2026/07/16/1784192311.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">ciiki的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">x264 - 高品质 H.264 编码器</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">x264 - 高品质 H.264 编码器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-07-16T08:55:26.000Z" title="发表于 2026-07-16 16:55:26">2026-07-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-07-16T09:05:45.990Z" title="更新于 2026-07-16 17:05:45">2026-07-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="H-264-与-x264"><a href="#H-264-与-x264" class="headerlink" title="H.264 与 x264"></a>H.264 与 x264</h2><h2 id="H-264-Profiles"><a href="#H-264-Profiles" class="headerlink" title="H.264 Profiles"></a>H.264 Profiles</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Advanced_Video_Coding#Profiles">Wikipedia - Advanced Video Coding - Profiles</a></p>
+<p>H.264 包含多个不同的 Profile, 用于适应不同的应用需求:</p>
+<h3 id="Baseline-Profile"><a href="#Baseline-Profile" class="headerlink" title="Baseline Profile"></a>Baseline Profile</h3><p>适合低成本和早期的移动设备使用, 目前已经很少采用</p>
+<p>主要用于低成本应用, 对播放设备的性能要求不高, 此 profile 常见用于早期性能较低的行动设备 (如 Apple iPod)。现今行动设备性能比起以前强大许多, 此 profile 已经没有什么必要性了</p>
+<h3 id="Main-Profile"><a href="#Main-Profile" class="headerlink" title="Main Profile"></a>Main Profile</h3><p>早期用于电视广播, 现今应用不多</p>
+<p>此 profile 原本是用于 SD 分辨率数码电视广播, 虽然没有实行, 然而被用于 HD 分辨率的电视广播。在 2004 年 High Profile 被开发之后, 此 profile 已经没有什么必要性了</p>
+<p>早期的高性能行动播放设备(如 Sony PSP), 也是使用此 profile</p>
+<h3 id="High-Profile"><a href="#High-Profile" class="headerlink" title="High Profile"></a>High Profile</h3><p>广泛用于 HD 应用, 如 Blu-ray、高清电视和游戏机</p>
+<p>目前使用最广泛的 profile, 由其是 HD 分辨率电视应用 (如 Blu-ray &#x2F; AVCHD 光盘储存、游戏机等电视多媒体播放器、HDTV DVB 广播服务)</p>
+<p>现今的行动播放设备都可以流畅播放用此 profile 的 SD 分辨率影片, 中阶等级可以上 720p 分辨率, 高阶甚至可上 FullHD (软解可能会有点吃力, 硬解完全没问题)</p>
+<h3 id="High-10-Profile"><a href="#High-10-Profile" class="headerlink" title="High 10 Profile"></a>High 10 Profile</h3><p>支持更高位深和更精确的色彩取样, 主要用于专业领域</p>
+<p>超越目前主流的消费型产品能力, 此 profile 建立在 High Profile 之上, 多了支持 10 bit 的精度, 色彩更精准。</p>
+<p>以影片压制而言, 将 High Profile (8 bit) 影片重新编码输出为 H.264 High 10 Profile , 虽然色彩精度不会变, 但至少压缩率比输出 High Profile (8 bit) 还要高。</p>
+<h3 id="High-4-2-2-Profile"><a href="#High-4-2-2-Profile" class="headerlink" title="High 4:2:2 Profile"></a>High 4:2:2 Profile</h3><p>针对专业领域应用, 此 profile 建立在 High 10 Profile 之上, 多了支持 4:2:2 色彩取样, 比特深度达 10 bit</p>
+<h3 id="High-4-4-4-Predictive-Profile"><a href="#High-4-4-4-Predictive-Profile" class="headerlink" title="High 4:4:4 Predictive Profile"></a>High 4:4:4 Predictive Profile</h3><p>支持最高的色彩精度和无损压缩, 适合专业需求</p>
+<p>此 profile 建立在 High 4:2:2 Profile 之上, 多了支持 4:4:4 色彩取样, 比特深度达 14 bit, 并且支持高效率无损重新编码, 且每张画面编码为三个独立的色彩平面</p>
+<h2 id="H-264-Frame-Types"><a href="#H-264-Frame-Types" class="headerlink" title="H.264 Frame Types"></a>H.264 Frame Types</h2><p>影片是由许多连续的 Frames 所组成, 但并不是所有 Frames 都是完整的画面, 那些 Frames 需要参考其他 Frames 才能解码出一张完整的画面。</p>
+<p>H.264 使用三种不同类型的帧, 以减少数据量和提高压缩效率:</p>
+<h3 id="I-frame"><a href="#I-frame" class="headerlink" title="I-frame"></a>I-frame</h3><p>独立完整的帧, 可直接解码, 不依赖其他帧</p>
+<p>不需要参考其他 Frames, 是一张完整的画面。</p>
+<p>IDR frame 为真正的 关键帧 (keyframes), P-frame &amp; B-frame 不会越过 IDR frame 去参考其他 Frames, 所以可以随意跳转到任意 IDR frame 开始播放&#x2F;解码, 而不会发生问题。</p>
+<h3 id="P-frame"><a href="#P-frame" class="headerlink" title="P-frame"></a>P-frame</h3><p>记录相对于前一帧的差异, 只保存变化部分, 提高压缩效率</p>
+<p>只记录了与之前的 Frames 相异的区块, 最多可以参考 <code>16 张</code> 之前的 Frames</p>
+<p>播放 &#x2F; 解码时需要参用到之前的 Frames 的部分资料, 才能解码出完整画面</p>
+<p>在 x264 中, 你不能控制 P-frame 数量, 但你可以控制一个 P-frame 所能参考的 Frame 数量, 也就是 Reference frame (ref) 的数值</p>
+<h3 id="B-frame"><a href="#B-frame" class="headerlink" title="B-frame"></a>B-frame</h3><p>利用前后两帧的信息记录差异部分, 具有最高的压缩率, 但增加了解码的复杂度</p>
+<p>只记录了与前一张与后一张的 Frames 相异的区块, 压缩率高(由其是在低动态&#x2F;低变化的影片), 播放&#x2F;解码时需要用到前后两张的 Frames 的部分资料, 才能解码出完整画面</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>(登入后即可检视图片)<br>从此图你可以发见 B-Frame 有用到前一张与后一张 Frame 的资料</p>
+<p>播放 Farme 的顺序是依照 Frame 的时间点, 但解码顺序则不一定, 当 B-Frame 有用到后一张 Frame 的资料时, 就必须预先解码后一张 Frame</p>
+<p>以上图为例<br>解码(处理)顺序: 1-2-4-3<br>显示(播放)顺序: 1-2-3-4</p>
+<p>由于 P-&#x2F;B-frame 不是完整的画面, 解码时必须参考其他 Frames, 所以你不能随意跳转到 P-&#x2F;B-frame 上播放&#x2F;解码</p>
+<p>也就是说你如果播放 MPEG 视频格式, 当你跳播放时间点时, 正常而言, 并不会跳到你所选的时间点上, 而是最近的 IDR &#x2F; I-frame</p>
+<hr>
+<p>就压缩率而言…<br>由于 P-&#x2F;B-frame 并不是完整的画面, 所以占用的空间较少, 提高这类 Frame 使用量可以有效提升压缩率, 但对画质几乎不会降低, 这代表可以使用较少的 bitrate (比特率) 达到维持一定画质</p>
+<p>由以上得知, 在 bitrate 充足的情况下, 则不需要使用较多 B-frame、Reference frame (ref), 多少 bitrate 为充足依影片内容为定, 高动态影片需要较多 bitrate, 低动则较少</p>
+<p>至于使用时机…<br>提高 B-frame&#x2F;ref 使用量可以降低 bitrate 的需求, 使用较少 bitrate 达到目标品质。低动态的影片可以使用较多的 B-frame, 高动态或是纯静态则是 P-frame 效果较好</p>
+<p>对于相容性与硬件负担…<br>提高 B-frame&#x2F;ref 使用量的副作用是降相容性以及提高硬件负担, 请先保证相容性再来追求压缩率。</p>
+<p>而 ref 的副作用要比 B-frame 强, 例如 ref&#x3D;16 这代表解码一个 P-frame 必须要连跳回 1~16 张之前的 Frames 取用资料。</p>
+<h2 id="x264-参数设置"><a href="#x264-参数设置" class="headerlink" title="x264 参数设置"></a>x264 参数设置</h2><h3 id="Max-B-frame-bframes"><a href="#Max-B-frame-bframes" class="headerlink" title="Max B-frame (bframes)"></a>Max B-frame (bframes)</h3><p>控制 B-frame 的最大数量, 用于提升压缩率。</p>
+<p>当设置 B-frame 时, 重复部分比较多&#x2F;变化较少的 Frames 会被编码为 B-frame</p>
+<h3 id="Reference-frame-ref"><a href="#Reference-frame-ref" class="headerlink" title="Reference frame (ref)"></a>Reference frame (ref)</h3><p>指定 P-frame 的参考帧 (Frames) 数量。适度提高该值可优化压缩效果, 但会增加硬件解码负担</p>
+<p>推荐设置</p>
+<h3 id="GOP-长度"><a href="#GOP-长度" class="headerlink" title="GOP 长度"></a>GOP 长度</h3><p>指定关键帧 (IDR frame) 的间隔, 以便在跳转播放时保持解码的流畅性。</p>
+<p>一个 keyframe (IDR frame) 到下一个 keyframe 的范围。</p>
+<p>所以将 GOP 设为无限大虽然可以大幅增加压缩率, 但这样就不能随意跳转到其他时间点播放&#x2F;解码。</p>
+<p>建议维持 default 即可</p>
+<h3 id="Profile-和-Level"><a href="#Profile-和-Level" class="headerlink" title="Profile 和 Level"></a>Profile 和 Level</h3><p>决定视频的压缩比和硬件性能需求, Profile 越高代表更高的压缩率和更复杂的编码, 但要求设备具有更高的解码性能</p>
+<h3 id="interlaced-隔行扫描"><a href="#interlaced-隔行扫描" class="headerlink" title="interlaced (隔行扫描)"></a>interlaced (隔行扫描)</h3><p>支持编码输出 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9A%94%E8%A1%8C%E6%89%AB%E6%8F%8F">interlaced (隔行扫描)</a> 的视频</p>
+<h2 id="x264-预设-Preset"><a href="#x264-预设-Preset" class="headerlink" title="x264 预设 (Preset)"></a>x264 预设 (Preset)</h2><p>x264 提供了多种预设选项 (Preset), 从 ultrafast 到 placebo, 用于控制编码速度和压缩效率的平衡。一般建议选择一个合适的预设以在编码效率和文件大小之间取得平衡。</p>
+<p>速度越慢则会得到更好的压缩编码效率 (画质-比特率比 或 画质-视频大小比)。也就是说, 若你设置一个目标比特率或是视频大小, 则越慢的 Preset 将会得到更好的输出品质。而对于设置一个恒定品质 (CRF) 或是恒定量化值 (QP), 你可以透过选择更慢的 Preset 来简单的节省比特率 (也就是得到更小的视频大小)。</p>
+<p>一般而言是使用你所能忍受的最慢 Preset。目前 Presets 依速度递减排序是</p>
+<p>该默认 Preset 是 medium, 忽略 placebo 因为它会比 veryslow 浪费更多时间而且效果差异太小。</p>
+<p>而越慢的 Preset 其 Reference frame (ref) 值也越高, 例如 veryslow preset 的 ref 为 16。由于通常不需这么高的 ref, 你可以透过指定一个 Level 来限制 ref, 或是手动指定一个合理的 ref 值 (1 ~ 6)</p>
+<h2 id="x264-微调-Tune"><a href="#x264-微调-Tune" class="headerlink" title="x264 微调 (Tune)"></a>x264 微调 (Tune)</h2><p>Tune 参数则是针对特定内容类型 (如电影、动画、低延迟等) 优化的设置, 以改善特定应用的压缩效果。</p>
+<table>
+<thead>
+<tr>
+<th>压缩效果</th>
+<th>内容类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>film</code> (电影)</td>
+<td>胶片电影、真人类型</td>
+</tr>
+<tr>
+<td><code>animation</code> (动画)</td>
+<td>例如卡通&#x2F;日本动画</td>
+</tr>
+<tr>
+<td><code>grain</code> (胶片颗粒)</td>
+<td>颗粒感很重的影片。需要保留大量的 grain 时用</td>
+</tr>
+<tr>
+<td><code>stillimage</code> (静止影像)</td>
+<td>例如幻灯片效果的影片。静态图像编码时使用</td>
+</tr>
+<tr>
+<td>PSNR</td>
+<td>优化 PSNR 值。 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/PSNR">Wiki</a> 为提高 psnr 做了优化的参数</td>
+</tr>
+<tr>
+<td>SSIM</td>
+<td>优化 SSIM 值。 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/SSIM">Wiki</a> 为提高 ssim 做了优化的参数</td>
+</tr>
+<tr>
+<td>Fast Decode (快速解码)</td>
+<td>用于低性能播放设备。可以快速解码的参数 (※ 压缩率极低)</td>
+</tr>
+<tr>
+<td><code>zerolatency</code> (零延迟)</td>
+<td>处里时间低延迟。主要用于直播等。用在需要非常低的延迟的情况下, 比如电视电话会议的编码。(※ 压缩率极低)</td>
+</tr>
+</tbody></table>
+<h3 id="参考实例"><a href="#参考实例" class="headerlink" title="参考实例"></a>参考实例</h3><p>以下示例演示了如何应用基本选项来输出压缩高效的 H.264 视频文件</p>
+<p>常规压缩 (适用于一般影片)</p>
+<p>此命令使用 <code>slow</code> 预设, 以获得较高压缩比, <code>CRF</code> 设置为 20, 这将保持高画质</p>
+<hr>
+<p>动画影片 (适用于卡通或动画类型)</p>
+<p><code>--tune animation</code> 调整了编码参数, 以确保细节和动态画面效果适合动画</p>
+<hr>
+<p>低延迟设置 (适用于直播或会议场景)</p>
+<p><code>--tune zerolatency</code> 适用于需要快速解码的实时场景</p>
+<h2 id="H-264-Level"><a href="#H-264-Level" class="headerlink" title="H.264 Level"></a>H.264 Level</h2><p>H.264 的 Level 和 MaxDpbMbs 直接表示了播放设备的解码性能要求。Level 值越高, 设备的解码性能要求越高, 输出影片的压缩率也越高。</p>
+<h3 id="MaxDpbMbs-对应的-Level"><a href="#MaxDpbMbs-对应的-Level" class="headerlink" title="MaxDpbMbs 对应的 Level"></a>MaxDpbMbs 对应的 Level</h3><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Advanced_Video_Coding#Decoded_picture_buffering">Wikipedia - Decoded picture buffering</a></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>MaxDpbMbs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>396</td>
+</tr>
+<tr>
+<td>1b</td>
+<td>396</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>900</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>2,376</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>2,376</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2,376</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>4,752</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>8,100</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8,100</td>
+</tr>
+<tr>
+<td>3.1</td>
+<td>18,000</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>20,480</td>
+</tr>
+<tr>
+<td>4</td>
+<td>32,768</td>
+</tr>
+<tr>
+<td>4.1</td>
+<td>32,768</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>34,816</td>
+</tr>
+<tr>
+<td>5</td>
+<td>110,400</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>184,320</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>184,320</td>
+</tr>
+<tr>
+<td>6</td>
+<td>696,320</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>696,320</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>696,320</td>
+</tr>
+</tbody></table>
+<p>关系方程式</p>
+<p>强制指定 Level (限制 MaxDpbMbs)</p>
+<p>$$ \text{ref} &#x3D; \min\left(\text{Floor}\left(\frac{\text{MaxDpbMbs}}{\text{PicWidthInMbs} \times \text{FrameHeightInMbs}} \right), 16\right) $$</p>
+<ol>
+<li><code>Floor(x)</code>: 向下取整数, 小数点直接舍去。 ex. Floor(1.9) &#x3D; 1</li>
+<li><code>Min(x, y)</code>: 取比较小的数值。 ex. Min(2, 5) &#x3D; 2</li>
+</ol>
+<p>强制指定 ref</p>
+<p>$$ \text{MaxDpbMbs} &#x3D; \text{PicWidthInMbs} \times \text{FrameHeightInMbs} \times \text{ref} $$</p>
+<p>计算 PicWidthInMbs 和 FrameHeightInMbs (小数点向上取整)</p>
+<p>$$ \text{PicWidthInMbs} &#x3D; \frac{\text{Width}}{16} $$</p>
+<p>$$ \text{FrameHeightInMbs} &#x3D; \frac{\text{Height}}{16} $$</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>输出设置</p>
+<p>计算 MaxDpbMbs:</p>
+<p>$$ \text{MaxDpbMbs} &#x3D; 80 \times 45 \times 4 &#x3D; 14400 $$</p>
+<p>对照表得出 Level &#x3D; 3.1</p>
+<hr>
+<p>输出设置</p>
+<p>计算 ref</p>
+<p>$$ \text{ref} &#x3D; \min\left(\text{Floor}\left(\frac{18000}{80 \times 45}\right), 16\right) &#x3D; \min(5, 16) &#x3D; 5 $$</p>
+<p>输出 H.264 的 ref 可能为 4 或 5</p>
+<p>同时强制指定 ref 与 Level</p>
+<p>ref 设置值不能大于 5 (强制指定 ref 不能超过 Level 的限制)</p>
+<h2 id="x264-比特率控制"><a href="#x264-比特率控制" class="headerlink" title="x264 比特率控制"></a>x264 比特率控制</h2><p>x264 提供多种输出品质和比特率控制方式, 主要包括 Constant Rate Factor (CRF) 和 2-Pass Bitrate。速率控制是指决定多少比特将被用于每帧的方法。这将决定视频大小且品质如何分布。而 CRF 的比特率分配效果是最佳的, 若无控制输出大小的需求则使用 CRF 即可。</p>
+<h3 id="Constant-Quantizer-QP"><a href="#Constant-Quantizer-QP" class="headerlink" title="Constant Quantizer (QP)"></a>Constant Quantizer (QP)</h3><p>设置 x264 以恒定量化值 (Constant Quantizer) 模式来编码视频。此方法可以让每帧获得相同品质 (设置值)。</p>
+<p>设置值范围: <code>0 - 69</code>, 0 为最无损, 默认值为 23。比较低的数值会得到比较高的品质, 合理的范围 21 - 28。</p>
+<h3 id="Constant-Ratefactor-CRF"><a href="#Constant-Ratefactor-CRF" class="headerlink" title="Constant Ratefactor (CRF)"></a>Constant Ratefactor (CRF)</h3><p>此方法允许编码器自动分配比特速率来试着达到一定输出品质。让每帧得到它需要的比特率来保持所需的品质等级。CRF 会得到最佳的比特速率分配结果, 缺点是你不能直接指定一个目标比特率或是视频大小。</p>
+<p>设置值范围为 <code>0 - 51.0</code>, 0 为最高品质, 默认值为 23。比较低的数值会得到比较高的品质, 合理的范围 18 - 28。考虑 18 为视觉无损 (或接近), 所以它看起来应该与输入相同 (或接近) 但它技术上不是无损。</p>
+<h3 id="Bitrate"><a href="#Bitrate" class="headerlink" title="Bitrate"></a>Bitrate</h3><p>自订 Bitrate 控制输出 Size, 直接编码输出视频。由于没有先扫描过一次, x264 无法得知影片各时间点的复杂程度。所以 x264 只能在编码中不断猜后之后的复杂程度, 这样将不能精准依各时间点的复杂程度等比例分配比特率, 因为如果之前分配了过多流量, 那么之后就必下修流量来使输出比特率平均值等于用户设置值</p>
+<h3 id="Bitrate-2-Pass"><a href="#Bitrate-2-Pass" class="headerlink" title="Bitrate, 2-Pass"></a>Bitrate, 2-Pass</h3><p>此方法让编码器 1st-Pass 将会得知影片各个帧的复杂程度, 2nd-Pass 时依照输入视频各个帧的复杂程度等比例分配比特数输出, 并且最终平均比特速率会等于设置值。2-Pass 比特速率分配结果会接近 CRF, 缺点是耗费大量时间</p>
+<h3 id="1st-Pass-CRF-2-Pass-Bitrate"><a href="#1st-Pass-CRF-2-Pass-Bitrate" class="headerlink" title="1st-Pass CRF + 2-Pass Bitrate"></a>1st-Pass CRF + 2-Pass Bitrate</h3><p>此方法让编码器在 1st-Pass 时将会得知影片各个帧所需要的比特数, 2nd-Pass 时依照各个帧所需要的比特数等比例分配使最终比特速率总平均值会等于设置值。2-Pass 比特速率分配结果会接近 CRF, 缺点是耗费大量时间</p>
+<h2 id="x264-设置优先级"><a href="#x264-设置优先级" class="headerlink" title="x264 设置优先级"></a>x264 设置优先级</h2><p>设置优先级顺序</p>
+<p>当参数冲突时, 后者会取代前者或是影响前者</p>
+<p>preset slower 的参数为</p>
+<p>当我设置</p>
+<p>等同于</p>
+<p>输出 H.264 的 Reference frame (ref) 为 <code>4</code></p>
+<hr>
+<p>当我设置</p>
+<p>输出 H.264 的 Reference frame (ref) 为 <code>5</code></p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>基本语法</p>
+<p>输入格式支持</p>
+<p>输出文件格式</p>
+<h2 id="Piping-使用方法"><a href="#Piping-使用方法" class="headerlink" title="Piping 使用方法"></a>Piping 使用方法</h2><h3 id="64bit-的-x264"><a href="#64bit-的-x264" class="headerlink" title="64bit 的 x264"></a>64bit 的 x264</h3><p>如果用了 64 位的 Windows, 就可以用 64 位的 x264。64 位的 x264 大约能比 32 位的 x264 快上 10% 左右, 能节省的时间还是比较可观的。但是用 AviSynth 输入时, 64 位的 x264 只接受 64 位的 AviSynth 输入, 32 位的 x264 只接受 32 位的 AviSynth。</p>
+<p>虽然现在有 64 位的 AviSynth 和不少常用的滤镜, 但是大多数人还是愿意用 32 位的 AviSynth。那么如何用让 64位的 x264 配合 32 位的 AviSynth 呢？</p>
+<p>方法是用 pipe。用命令行工具 (如 ffmpeg、mencoder 或 avs2yuv) 打开 avs, 让输出的 raw yuv 画面直接输入给 x264, 期间不产生中间文件。这个操作也是在命令行里实现的。</p>
+<h3 id="使用-ffmpeg-输入"><a href="#使用-ffmpeg-输入" class="headerlink" title="使用 ffmpeg 输入"></a>使用 ffmpeg 输入</h3><p>先下载 ffmpeg 的 Windows 编译版, 可以用 static link 版本。和 x264 一样, ffmpeg 放在任何目录里都能运行, 假设和 x264、要进行编码的 input.avs 放在一个目录里</p>
+<p>先用 <code>ffmpeg</code> 打开 <code>input.avs</code>, 并不指定输出的文件, 而是以 <code>-</code> 代替输出的文件。后面写 <code>|</code>, 再写 <code>x264</code>, x264 的选项和输出文件写法不变, 但是输入文件写 <code>-</code></p>
+<h3 id="使用-mencoder-输入-未测试"><a href="#使用-mencoder-输入-未测试" class="headerlink" title="使用 mencoder 输入 (未测试)"></a>使用 mencoder 输入 (未测试)</h3><p>mencoder 有很多有价值的滤镜, 用起来也很方便。libx264 可以编译进 mencoder 本身, 和单独的 x264 效果一样。mencoder 也可以打开 avs 文件, pipe 给 64 位的 x264。mplayer-ww 的命令行版里就带有 mencoder</p>
+<p>同样假设 mencoder、x264 和要编码的 input.avs (1280x720) 在一个目录里</p>
+<h3 id="使用-avs2yuv-输入"><a href="#使用-avs2yuv-输入" class="headerlink" title="使用 avs2yuv 输入"></a>使用 avs2yuv 输入</h3><p>avs2yuv 本来是为了给 linux 上 wine 来用的, 因为 AviSynth 是运行在 Windows 的, 在 linux 里必须 wine avs2yuv 来打开 avs, 再 pipe 给 x264。当然也可以用来 pipe 给 64 位的 x264</p>
+<p>同样假设 avs2yuv、x264 和要编码的 input.avs 在一个目录里</p>
+<p>avs2yuv 的输出格式默认是 yuv4mpeg, x264 用 y4m 格式解码即可从中读取分辨率, 所以无须再用 <code>--input-res</code> 指定分辨率</p>
+<p>以上介绍了 3 种方法, 个人比较倾向于用 ffmpeg。2pass 的编码也是像上面所讲的方法一样</p>
+<hr>
+<p>原文</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/H.264/MPEG-4_AVC">Wikipedia - H.264&#x2F;MPEG-4 AVC</a><br><a target="_blank" rel="noopener" href="https://www.videolan.org/developers/x264.html">VideoLAN - x264</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/X264">Wikipedia - x264</a><br><a target="_blank" rel="noopener" href="http://wmnmtm.blog.163.com/blog/static/38245714201151062743886/">X264使用介绍 关于pipe</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/x_wukong/p/5211105.html">x264 - 高品质 H.264 编码器</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ciiki.eu.org">ciiki</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ciiki.eu.org/2026/07/16/x264/">https://ciiki.eu.org/2026/07/16/x264/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://ciiki.eu.org" target="_blank">ciiki的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/">音视频</a><a class="post-meta__tags" href="/tags/x264/">x264</a></div><div class="post-share"><div class="social-share" data-image="https://file.ciiki.eu.org/2026/07/16/1784192311.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/02/03/Docker%E5%AD%A6%E4%B9%A0/" title="Docker学习"><img class="cover" src="https://file.ciiki.eu.org/2026/02/03/1770115670.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Docker学习</div></div><div class="info-2"><div class="info-item-1">卸载123for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; donesudo rm -rf /var/lib/docker  安装12345curl -fsSL https://get.docker.com -o get-docker.shsudo sh get-docker.shsudo systemctl start dockersudo systemctl enable docker  普通用户添加执行权限1sudo usermod -aG docker $USER  </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/10/08/G711%E7%BC%96%E8%A7%A3%E7%A0%81-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0/" title="G711编解码--C语言实现"><img class="cover" src="https://file.ciiki.eu.org/2023/10/G711.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-08</div><div class="info-item-2">G711编解码--C语言实现</div></div><div class="info-2"><div class="info-item-1">前言G.711是一种窄带音频编解码器，最初设计用于电话，可提供 64 kbit&#x2F;s 的长途质量音频。它是音频编码的ITU-T标准（推荐），名为语音脉冲编码调制 (PCM)，于 1972 年发布并使用。 G.711 传递300–3400 Hz频段的音频信号，并以8000 Hz 的速率对其进行采样，该速率的容差为百万分之50 (ppm)。 它使用两种不同的对数压扩算法之一：μ-law（主要在北美和日本使用）和A-law（在北美以外的大多数其他国家&#x2F;地区使用）。每个压扩样本被量化为 8 位，从而产生 64 kbit&#x2F;s 的比特率。[1] Wikipedia 压缩原理G711按采样点进行压缩，舍弃低位，高位分段，将16bit的一个采样点数据压缩为8bit，所以压缩比固定为 8&#x2F;16 &#x3D; 50%。G.711a对高13位进行压缩，主要运用于欧洲和世界其他地区；G.711u对高14位进行压缩，主要运用于北美和日本 G.711a编码 取符号位并取反得到 $\overline s$ 获取强度位 eee 获取高位样本位 wxyz 组合为 $\over...</div></div></div></a><a class="pagination-related" href="/2024/12/26/RtAudio%E6%92%AD%E6%94%BEPCM/" title="RtAudio播放PCM"><img class="cover" src="https://file.ciiki.eu.org/2024/12/26/1735203137.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-26</div><div class="info-item-2">RtAudio播放PCM</div></div><div class="info-2"><div class="info-item-1">RtAudio播放PCM1. RtAudio简介RtAudio是一个跨平台的音频I&#x2F;O库，可以在Windows、MacOS和Linux上使用。它提供了简单易用的接口，可以方便地进行音频数据的输入和输出。项目地址 Pulse和ALSA的区别PulseAudio和ALSA是Linux系统中两种重要的音频处理组件，它们在功能和用途上存在显著区别。  ALSA（Advanced Linux Sound Architecture）ALSA是Linux内核的一部分，主要负责与声卡的直接通信。它提供了一套底层的音频驱动接口，允许应用程序直接访问声卡硬件。然而，ALSA有一些局限性，例如它一次只能处理一个应用程序的音频流，且不支持多路混音。此外，ALSA的配置和使用相对复杂，需要手动设置和调整。  PulseAudioPulseAudio是一个运行在用户空间的音频服务器，它通过ALSA与硬件通信。PulseAudio的主要功能是作为多个应用程序之间的音频仲裁者，能够同时处理多个音频流，并提供混音、音量控制、设备切换等功能。PulseAudio还支持跨平台使用，可以在不同的操作系统上运行...</div></div></div></a><a class="pagination-related" href="/2024/11/13/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86lowcFE/" title="音频处理lowcFE"><img class="cover" src="https://file.ciiki.eu.org/2024/11/13/1731486012.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-13</div><div class="info-item-2">音频处理lowcFE</div></div><div class="info-2"><div class="info-item-1">前言流媒体在网络传输中有可能会发生丢包现象，对于音频，丢包会导致解码后的声音听起来卡顿不连续，lowcFE是种算法，可在发生丢包时猜测丢包内容，模拟丢失的数据 lowcFE，全称为 Low Complexity Frame Erasure 低复杂度帧擦除（为什么叫擦除而不是恢复我也不懂），所谓低复杂度大概原因是其只支持8K采样的10ms数据吧 头文件 lowcfe.h123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566/*  ============================================================================   File: lowcfe.h                                            V.1.0-24.MAY-2005  =============================...</div></div></div></a><a class="pagination-related" href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89-PCM%E6%A0%BC%E5%BC%8F/" title="音视频笔记（2）--PCM格式"><img class="cover" src="https://file.ciiki.eu.org/2023/11/pcm.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-21</div><div class="info-item-2">音视频笔记（2）--PCM格式</div></div><div class="info-2"><div class="info-item-1">参数（1）采样位深：每个采样点的bit数 8bits: 0~255 16bits: 0~65535 （2）采样率：每秒采样次数 16KHz：每秒采16000个采样点 （3）声道数 双声道(stereo)：左-右-左-右… （4）字节序 一般使用小端存储结构，16LE：低字节高字节-低字节高字节-低字节高字节… 处理代码来自雷霄骅，致敬雷神，雷神千古！ 分离test_stereo_s16le.pcm左右声道1234567891011121314151617181920212223242526/** * Split Left and Right channel of 16LE PCM file. * @param url  Location of PCM file. * */int simplest_pcm16le_split(char *url)&#123;	FILE *fp=fopen(url,&quot;rb+&quot;);	FILE *fp1=fopen(&quot;output_l.pcm&quot;,&quot;wb+&quot;);	FILE *fp2=fopen(&...</div></div></div></a><a class="pagination-related" href="/2024/11/05/libx265%E7%BC%96%E7%A0%81/" title="libx265编码"><img class="cover" src="https://file.ciiki.eu.org/2024/11/05/1730793760.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-05</div><div class="info-item-2">libx265编码</div></div><div class="info-2"><div class="info-item-1">源码编译12345678git clone https://code.videolan.org/videolan/x264.gitcd x264/sourcemkdir buildcd buildcmake .. -DCMAKE_BUILD_TYPE=Debug -G &quot;MinGW Makefiles&quot;make -j8  编译成功的话应该会产出三个文件，一个静态库 libx265.a，一个动态库 libx265.dll 以及该动态库的导入库 libx265.dll.a  新建编码demo项目拷贝 libx265.a， x265.h，x265_config.h 至demo目录中 这里 encoder.cpp 还是用的雷霄骅–雷神的代码，致敬！https://blog.csdn.net/leixiaohua1020/article/details/42079101 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455...</div></div></div></a><a class="pagination-related" href="/2022/12/21/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89-YUV%E6%A0%BC%E5%BC%8F/" title="音视频笔记（1）--YUV格式"><img class="cover" src="https://file.ciiki.eu.org/2023/11/yuv.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-21</div><div class="info-item-2">音视频笔记（1）--YUV格式</div></div><div class="info-2"><div class="info-item-1">来源我们都知道RGB格式表示色彩，但是之前的显示器只能解析灰白的图像，为了兼容老旧设备，自然不能用RGB格式表示图像，于是YUV出现了。它可以将RGB三个分量转换成YUV三个分量，对于可以显示彩色的设备，解析Y、U、V三个分量，显示出彩色；对于老旧黑白设备，仅解析Y分量，就可以显示出黑白的图像。 YUV和YCbCr、YPbPr几个概念是一样的，Y表示亮度（Luminance），也就是灰度，U是色度（Chrominance），V是浓度（Chroma），而人眼对亮度分量Y的敏感度是高于UV分量的，所以YUV相对于RGB还可以减少数据量 RGB转YUVY &#x3D; 0.299R + 0.587G + 0.114*B U &#x3D; -0.147R - 0.289G + 0.436B &#x3D; 0.492(B-Y) V &#x3D; 0.615R - 0.515G - 0.100B &#x3D; 0.877(R-Y) YUV转RGBR &#x3D; Y + 1.140*V G &#x3D; Y - 0.394U - 0.581V B &#x3D; Y + 2.032*U 格式分...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">ciiki</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://t.me/ciiki_li" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a><a class="social-icon" href="mailto:ciiki@ciiki.eu.org" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#H-264-%E4%B8%8E-x264"><span class="toc-number">1.</span> <span class="toc-text">H.264 与 x264</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H-264-Profiles"><span class="toc-number">2.</span> <span class="toc-text">H.264 Profiles</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Baseline-Profile"><span class="toc-number">2.1.</span> <span class="toc-text">Baseline Profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Main-Profile"><span class="toc-number">2.2.</span> <span class="toc-text">Main Profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-Profile"><span class="toc-number">2.3.</span> <span class="toc-text">High Profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-10-Profile"><span class="toc-number">2.4.</span> <span class="toc-text">High 10 Profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-4-2-2-Profile"><span class="toc-number">2.5.</span> <span class="toc-text">High 4:2:2 Profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-4-4-4-Predictive-Profile"><span class="toc-number">2.6.</span> <span class="toc-text">High 4:4:4 Predictive Profile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H-264-Frame-Types"><span class="toc-number">3.</span> <span class="toc-text">H.264 Frame Types</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#I-frame"><span class="toc-number">3.1.</span> <span class="toc-text">I-frame</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#P-frame"><span class="toc-number">3.2.</span> <span class="toc-text">P-frame</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-frame"><span class="toc-number">3.3.</span> <span class="toc-text">B-frame</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">3.3.1.</span> <span class="toc-text">例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x264-%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">x264 参数设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Max-B-frame-bframes"><span class="toc-number">4.1.</span> <span class="toc-text">Max B-frame (bframes)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-frame-ref"><span class="toc-number">4.2.</span> <span class="toc-text">Reference frame (ref)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GOP-%E9%95%BF%E5%BA%A6"><span class="toc-number">4.3.</span> <span class="toc-text">GOP 长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Profile-%E5%92%8C-Level"><span class="toc-number">4.4.</span> <span class="toc-text">Profile 和 Level</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#interlaced-%E9%9A%94%E8%A1%8C%E6%89%AB%E6%8F%8F"><span class="toc-number">4.5.</span> <span class="toc-text">interlaced (隔行扫描)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x264-%E9%A2%84%E8%AE%BE-Preset"><span class="toc-number">5.</span> <span class="toc-text">x264 预设 (Preset)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x264-%E5%BE%AE%E8%B0%83-Tune"><span class="toc-number">6.</span> <span class="toc-text">x264 微调 (Tune)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%AE%9E%E4%BE%8B"><span class="toc-number">6.1.</span> <span class="toc-text">参考实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#H-264-Level"><span class="toc-number">7.</span> <span class="toc-text">H.264 Level</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MaxDpbMbs-%E5%AF%B9%E5%BA%94%E7%9A%84-Level"><span class="toc-number">7.1.</span> <span class="toc-text">MaxDpbMbs 对应的 Level</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">7.2.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x264-%E6%AF%94%E7%89%B9%E7%8E%87%E6%8E%A7%E5%88%B6"><span class="toc-number">8.</span> <span class="toc-text">x264 比特率控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Constant-Quantizer-QP"><span class="toc-number">8.1.</span> <span class="toc-text">Constant Quantizer (QP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constant-Ratefactor-CRF"><span class="toc-number">8.2.</span> <span class="toc-text">Constant Ratefactor (CRF)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bitrate"><span class="toc-number">8.3.</span> <span class="toc-text">Bitrate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bitrate-2-Pass"><span class="toc-number">8.4.</span> <span class="toc-text">Bitrate, 2-Pass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1st-Pass-CRF-2-Pass-Bitrate"><span class="toc-number">8.5.</span> <span class="toc-text">1st-Pass CRF + 2-Pass Bitrate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x264-%E8%AE%BE%E7%BD%AE%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">9.</span> <span class="toc-text">x264 设置优先级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">10.</span> <span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Piping-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">11.</span> <span class="toc-text">Piping 使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#64bit-%E7%9A%84-x264"><span class="toc-number">11.1.</span> <span class="toc-text">64bit 的 x264</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-ffmpeg-%E8%BE%93%E5%85%A5"><span class="toc-number">11.2.</span> <span class="toc-text">使用 ffmpeg 输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-mencoder-%E8%BE%93%E5%85%A5-%E6%9C%AA%E6%B5%8B%E8%AF%95"><span class="toc-number">11.3.</span> <span class="toc-text">使用 mencoder 输入 (未测试)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-avs2yuv-%E8%BE%93%E5%85%A5"><span class="toc-number">11.4.</span> <span class="toc-text">使用 avs2yuv 输入</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/07/16/x264/" title="x264 - 高品质 H.264 编码器"><img src="https://file.ciiki.eu.org/2026/07/16/1784192311.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="x264 - 高品质 H.264 编码器"/></a><div class="content"><a class="title" href="/2026/07/16/x264/" title="x264 - 高品质 H.264 编码器">x264 - 高品质 H.264 编码器</a><time datetime="2026-07-16T08:55:26.000Z" title="发表于 2026-07-16 16:55:26">2026-07-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/02/03/Docker%E5%AD%A6%E4%B9%A0/" title="Docker学习"><img src="https://file.ciiki.eu.org/2026/02/03/1770115670.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker学习"/></a><div class="content"><a class="title" href="/2026/02/03/Docker%E5%AD%A6%E4%B9%A0/" title="Docker学习">Docker学习</a><time datetime="2026-02-03T09:17:55.000Z" title="发表于 2026-02-03 17:17:55">2026-02-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/15/perf%E7%81%AB%E7%84%B0%E5%9B%BE/" title="perf火焰图"><img src="https://file.ciiki.eu.org/2026/01/15/1768447990.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="perf火焰图"/></a><div class="content"><a class="title" href="/2026/01/15/perf%E7%81%AB%E7%84%B0%E5%9B%BE/" title="perf火焰图">perf火焰图</a><time datetime="2026-01-15T03:28:10.000Z" title="发表于 2026-01-15 11:28:10">2026-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/29/Debain13%E5%AE%89%E8%A3%85btrfs%E5%92%8C%E5%BF%AB%E7%85%A7/" title="Debain13安装btrfs和快照"><img src="https://file.ciiki.eu.org/2025/09/29/1759123553.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Debain13安装btrfs和快照"/></a><div class="content"><a class="title" href="/2025/09/29/Debain13%E5%AE%89%E8%A3%85btrfs%E5%92%8C%E5%BF%AB%E7%85%A7/" title="Debain13安装btrfs和快照">Debain13安装btrfs和快照</a><time datetime="2025-09-29T05:17:25.000Z" title="发表于 2025-09-29 13:17:25">2025-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/31/qemu%E5%AE%89%E8%A3%85mips64el%E6%9E%B6%E6%9E%84debian12%E8%99%9A%E6%8B%9F%E6%9C%BA/" title="qemu安装mips64el架构debian12虚拟机"><img src="https://file.ciiki.eu.org/2025/07/31/1753925113.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="qemu安装mips64el架构debian12虚拟机"/></a><div class="content"><a class="title" href="/2025/07/31/qemu%E5%AE%89%E8%A3%85mips64el%E6%9E%B6%E6%9E%84debian12%E8%99%9A%E6%8B%9F%E6%9C%BA/" title="qemu安装mips64el架构debian12虚拟机">qemu安装mips64el架构debian12虚拟机</a><time datetime="2025-07-31T01:18:36.000Z" title="发表于 2025-07-31 09:18:36">2025-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2026 By ciiki</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.ciiki.eu.org/.netlify/functions/twikoo',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://twikoo.ciiki.eu.org/.netlify/functions/twikoo',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div id="algolia-search-input"><div class="ais-SearchBox"><form class="ais-SearchBox-form" action="" role="search" novalidate=""><input class="ais-SearchBox-input" type="search" placeholder="搜索文章" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="512" aria-label="Search"/><button class="ais-SearchBox-submit" type="submit" title="Submit the search query" style="display:none;"><svg class="ais-SearchBox-submitIcon" width="10" height="10" viewBox="0 0 40 40" aria-hidden="true"><path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"></path></svg></button></form></div><hr/><div id="algolia-search-results"><div id="algolia-hits"><div id="algolia-hits-empty" style="display:none;"></div><div class="ais-Hits" style="display:none;"><ol class="ais-Hits-list"></ol></div></div><div class="ais-Pagination" id="algolia-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="algolia-info"><span class="ais-Stats-text"></span><a class="algolia-poweredBy" href="https://www.algolia.com/?utm_source=algoliasearch.js&amp;utm_medium=website&amp;utm_content=localhost&amp;utm_campaign=poweredby" target="_blank" aria-label="Search by Algolia" rel="noopener noreferrer"><svg class="ais-PoweredBy-logo" height="1.2em" viewBox="0 0 572 64" style="width: auto;"><path fill="#36395A" d="M16 48.3c-3.4 0-6.3-.6-8.7-1.7A12.4 12.4 0 0 1 1.9 42C.6 40 0 38 0 35.4h6.5a6.7 6.7 0 0 0 3.9 6c1.4.7 3.3 1.1 5.6 1.1 2.2 0 4-.3 5.4-1a7 7 0 0 0 3-2.4 6 6 0 0 0 1-3.4c0-1.5-.6-2.8-1.9-3.7-1.3-1-3.3-1.6-5.9-1.8l-4-.4c-3.7-.3-6.6-1.4-8.8-3.4a10 10 0 0 1-3.3-7.9c0-2.4.6-4.6 1.8-6.4a12 12 0 0 1 5-4.3c2.2-1 4.7-1.6 7.5-1.6s5.5.5 7.6 1.6a12 12 0 0 1 5 4.4c1.2 1.8 1.8 4 1.8 6.7h-6.5a6.4 6.4 0 0 0-3.5-5.9c-1-.6-2.6-1-4.4-1s-3.2.3-4.4 1c-1.1.6-2 1.4-2.6 2.4-.5 1-.8 2-.8 3.1a5 5 0 0 0 1.5 3.6c1 1 2.6 1.7 4.7 1.9l4 .3c2.8.2 5.2.8 7.2 1.8 2.1 1 3.7 2.2 4.9 3.8a9.7 9.7 0 0 1 1.7 5.8c0 2.5-.7 4.7-2 6.6a13 13 0 0 1-5.6 4.4c-2.4 1-5.2 1.6-8.4 1.6Zm35.6 0c-2.6 0-4.8-.4-6.7-1.3a13 13 0 0 1-4.7-3.5 17.1 17.1 0 0 1-3.6-10.4v-1c0-2 .3-3.8 1-5.6a13 13 0 0 1 7.3-8.3 15 15 0 0 1 6.3-1.4A13.2 13.2 0 0 1 64 24.3c1 2.2 1.6 4.6 1.6 7.2V34H39.4v-4.3h21.8l-1.8 2.2c0-2-.3-3.7-.9-5.1a7.3 7.3 0 0 0-2.7-3.4c-1.2-.7-2.7-1.1-4.6-1.1s-3.4.4-4.7 1.3a8 8 0 0 0-2.9 3.6c-.6 1.5-.9 3.3-.9 5.4 0 2 .3 3.7 1 5.3a7.9 7.9 0 0 0 2.8 3.7c1.3.8 3 1.3 5 1.3s3.8-.5 5.1-1.3c1.3-1 2.1-2 2.4-3.2h6a11.8 11.8 0 0 1-7 8.7 16 16 0 0 1-6.4 1.2ZM80 48c-2.2 0-4-.3-5.7-1a8.4 8.4 0 0 1-3.7-3.3 9.7 9.7 0 0 1-1.3-5.2c0-2 .5-3.8 1.5-5.2a9 9 0 0 1 4.3-3.1c1.8-.7 4-1 6.7-1H89v4.1h-7.5c-2 0-3.4.5-4.4 1.4-1 1-1.6 2.1-1.6 3.6s.5 2.7 1.6 3.6c1 1 2.5 1.4 4.4 1.4 1.1 0 2.2-.2 3.2-.7 1-.4 1.9-1 2.6-2 .6-1 1-2.4 1-4.2l1.7 2.1c-.2 2-.7 3.8-1.5 5.2a9 9 0 0 1-3.4 3.3 12 12 0 0 1-5.3 1Zm9.5-.7v-8.8h-1v-10c0-1.8-.5-3.2-1.4-4.1-1-1-2.4-1.4-4.2-1.4a142.9 142.9 0 0 0-10.2.4v-5.6a74.8 74.8 0 0 1 8.6-.4c3 0 5.5.4 7.5 1.2s3.4 2 4.4 3.6c1 1.7 1.4 4 1.4 6.7v18.4h-5Zm12.9 0V17.8h5v12.3h-.2c0-4.2 1-7.4 2.8-9.5a11 11 0 0 1 8.3-3.1h1v5.6h-2a9 9 0 0 0-6.3 2.2c-1.5 1.5-2.2 3.6-2.2 6.4v15.6h-6.4Zm34.4 1a15 15 0 0 1-6.6-1.3c-1.9-.9-3.4-2-4.7-3.5a15.5 15.5 0 0 1-2.7-5c-.6-1.7-1-3.6-1-5.4v-1c0-2 .4-3.8 1-5.6a15 15 0 0 1 2.8-4.9c1.3-1.5 2.8-2.6 4.6-3.5a16.4 16.4 0 0 1 13.3.2c2 1 3.5 2.3 4.8 4a12 12 0 0 1 2 6H144c-.2-1.6-1-3-2.2-4.1a7.5 7.5 0 0 0-5.2-1.7 8 8 0 0 0-4.7 1.3 8 8 0 0 0-2.8 3.6 13.8 13.8 0 0 0 0 10.3c.6 1.5 1.5 2.7 2.8 3.6s2.8 1.3 4.8 1.3c1.5 0 2.7-.2 3.8-.8a7 7 0 0 0 2.6-2c.7-1 1-2 1.2-3.2h6.2a11 11 0 0 1-2 6.2 15.1 15.1 0 0 1-11.8 5.5Zm19.7-1v-40h6.4V31h-1.3c0-3 .4-5.5 1.1-7.6a9.7 9.7 0 0 1 3.5-4.8A9.9 9.9 0 0 1 172 17h.3c3.5 0 6 1.1 7.9 3.5 1.7 2.3 2.6 5.7 2.6 10v16.8h-6.4V29.6c0-2.1-.6-3.8-1.8-5a6.4 6.4 0 0 0-4.8-1.8c-2 0-3.7.7-5 2a7.8 7.8 0 0 0-1.9 5.5v17h-6.4Zm63.8 1a12.2 12.2 0 0 1-10.9-6.2 19 19 0 0 1-1.8-7.3h1.4v12.5h-5.1v-40h6.4v19.8l-2 3.5c.2-3.1.8-5.7 1.9-7.7a11 11 0 0 1 4.4-4.5c1.8-1 3.9-1.5 6.1-1.5a13.4 13.4 0 0 1 12.8 9.1c.7 1.9 1 3.8 1 6v1c0 2.2-.3 4.1-1 6a13.6 13.6 0 0 1-13.2 9.4Zm-1.2-5.5a8.4 8.4 0 0 0 7.9-5c.7-1.5 1.1-3.3 1.1-5.3s-.4-3.8-1.1-5.3a8.7 8.7 0 0 0-3.2-3.6 9.6 9.6 0 0 0-9.2-.2 8.5 8.5 0 0 0-3.3 3.2c-.8 1.4-1.3 3-1.3 5v2.3a9 9 0 0 0 1.3 4.8 9 9 0 0 0 3.4 3c1.4.7 2.8 1 4.4 1Zm27.3 3.9-10-28.9h6.5l9.5 28.9h-6Zm-7.5 12.2v-5.7h4.9c1 0 2-.1 2.9-.4a4 4 0 0 0 2-1.4c.4-.7.9-1.6 1.2-2.7l8.6-30.9h6.2l-9.3 32.4a14 14 0 0 1-2.5 5 8.9 8.9 0 0 1-4 2.8c-1.5.6-3.4.9-5.6.9h-4.4Zm9-12.2v-5.2h6.4v5.2H248Z"></path><path fill="#003DFF" d="M534.4 9.1H528a.8.8 0 0 1-.7-.7V1.8c0-.4.2-.7.6-.8l6.5-1c.4 0 .8.2.9.6v7.8c0 .4-.4.7-.8.7zM428 35.2V.8c0-.5-.3-.8-.7-.8h-.2l-6.4 1c-.4 0-.7.4-.7.8v35c0 1.6 0 11.8 12.3 12.2.5 0 .8-.4.8-.8V43c0-.4-.3-.7-.6-.8-4.5-.5-4.5-6-4.5-7zm106.5-21.8H528c-.4 0-.7.4-.7.8v34c0 .4.3.8.7.8h6.5c.4 0 .8-.4.8-.8v-34c0-.5-.4-.8-.8-.8zm-17.7 21.8V.8c0-.5-.3-.8-.8-.8l-6.5 1c-.4 0-.7.4-.7.8v35c0 1.6 0 11.8 12.3 12.2.4 0 .8-.4.8-.8V43c0-.4-.3-.7-.7-.8-4.4-.5-4.4-6-4.4-7zm-22.2-20.6a16.5 16.5 0 0 1 8.6 9.3c.8 2.2 1.3 4.8 1.3 7.5a19.4 19.4 0 0 1-4.6 12.6 14.8 14.8 0 0 1-5.2 3.6c-2 .9-5.2 1.4-6.8 1.4a21 21 0 0 1-6.7-1.4 15.4 15.4 0 0 1-8.6-9.3 21.3 21.3 0 0 1 0-14.4 15.2 15.2 0 0 1 8.6-9.3c2-.8 4.3-1.2 6.7-1.2s4.6.4 6.7 1.2zm-6.7 27.6c2.7 0 4.7-1 6.2-3s2.2-4.3 2.2-7.8-.7-6.3-2.2-8.3-3.5-3-6.2-3-4.7 1-6.1 3c-1.5 2-2.2 4.8-2.2 8.3s.7 5.8 2.2 7.8 3.5 3 6.2 3zm-88.8-28.8c-6.2 0-11.7 3.3-14.8 8.2a18.6 18.6 0 0 0 4.8 25.2c1.8 1.2 4 1.8 6.2 1.7s.1 0 .1 0h.9c4.2-.7 8-4 9.1-8.1v7.4c0 .4.3.7.8.7h6.4a.7.7 0 0 0 .7-.7V14.2c0-.5-.3-.8-.7-.8h-13.5zm6.3 26.5a9.8 9.8 0 0 1-5.7 2h-.5a10 10 0 0 1-9.2-14c1.4-3.7 5-6.3 9-6.3h6.4v18.3zm152.3-26.5h13.5c.5 0 .8.3.8.7v33.7c0 .4-.3.7-.8.7h-6.4a.7.7 0 0 1-.8-.7v-7.4c-1.2 4-4.8 7.4-9 8h-.1a4.2 4.2 0 0 1-.5.1h-.9a10.3 10.3 0 0 1-7-2.6c-4-3.3-6.5-8.4-6.5-14.2 0-3.7 1-7.2 3-10 3-5 8.5-8.3 14.7-8.3zm.6 28.4c2.2-.1 4.2-.6 5.7-2V21.7h-6.3a9.8 9.8 0 0 0-9 6.4 10.2 10.2 0 0 0 9.1 13.9h.5zM452.8 13.4c-6.2 0-11.7 3.3-14.8 8.2a18.5 18.5 0 0 0 3.6 24.3 10.4 10.4 0 0 0 13 .6c2.2-1.5 3.8-3.7 4.5-6.1v7.8c0 2.8-.8 5-2.2 6.3-1.5 1.5-4 2.2-7.5 2.2l-6-.3c-.3 0-.7.2-.8.5l-1.6 5.5c-.1.4.1.8.5 1h.1c2.8.4 5.5.6 7 .6 6.3 0 11-1.4 14-4.1 2.7-2.5 4.2-6.3 4.5-11.4V14.2c0-.5-.4-.8-.8-.8h-13.5zm6.3 8.2v18.3a9.6 9.6 0 0 1-5.6 2h-1a10.3 10.3 0 0 1-8.8-14c1.4-3.7 5-6.3 9-6.3h6.4zM291 31.5A32 32 0 0 1 322.8 0h30.8c.6 0 1.2.5 1.2 1.2v61.5c0 1.1-1.3 1.7-2.2 1l-19.2-17a18 18 0 0 1-11 3.4 18.1 18.1 0 1 1 18.2-14.8c-.1.4-.5.7-.9.6-.1 0-.3 0-.4-.2l-3.8-3.4c-.4-.3-.6-.8-.7-1.4a12 12 0 1 0-2.4 8.3c.4-.4 1-.5 1.6-.2l14.7 13.1v-46H323a26 26 0 1 0 10 49.7c.8-.4 1.6-.2 2.3.3l3 2.7c.3.2.3.7 0 1l-.2.2a32 32 0 0 1-47.2-28.6z"></path></svg></a></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/lite/builds/browser.umd.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>
